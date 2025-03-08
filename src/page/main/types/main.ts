@@ -5,3 +5,7 @@ export interface Icon {
   bottom?: number | string;
   right?: number | string;
 }
+
+export interface Images extends Icon {
+  src: string;
+}

@@ -6,6 +6,10 @@ export default {
       backgroundImage: {
         "memo-green": "url('/src/assets/memo.png')",
       },
+      fontFamily: {
+        sans: ["Abordage", "system-ui", "sans-serif"],
+        abordage: ["Abordage"],
+      },
       keyframes: {
         fall: {
           "0%": {

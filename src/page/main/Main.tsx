@@ -1,8 +1,9 @@
 import React from "react";
-import { Puppy, Flower, Round, Star } from "../memo/icon/MemoIcon";
+import { Puppy, Clover, Heart } from "../memo/icon/MemoIcon";
 import { Icon } from "./types/main";
-import MainLogo from "../../sectoin/mainlogo/MainLogo";
-import MainFace from "../../sectoin/mainface/MainFace";
+import MainLogo from "./mainlogo/MainLogo";
+import MainFace from "./mainface/MainFace";
+
 const Main = () => {
   const IconItem = React.memo(
     ({ icon, children }: { icon: Icon; children: React.ReactNode }) => {
@@ -38,19 +39,10 @@ const Main = () => {
     { id: 2, right: "96%", bottom: "50%" },
   ];
 
-  const starIcons: Icon[] = [
-    { id: 1, left: "15%", bottom: "20%" },
-    { id: 2, left: "45%", top: "15%" },
-    { id: 3, left: "55%", bottom: "20%" },
-    { id: 4, left: "85%", bottom: "20%" },
-    { id: 5, left: "90%", top: "50%" },
-    { id: 6, left: "25%", bottom: "50%" },
-  ];
-
   return (
     <main className="w-full h-[100dvh] flex flex-col justify-center items-center bg-[#000000]">
       {/* 메인 화면 */}
-      <section className=" w-[100%] h-[100dvh]  flex flex-col items-center justify-center relative">
+      <section className=" w-[100%] h-[100dvh]  flex flex-col items-center justify-center relative ">
         {puppyIcons.map((icon) => (
           <IconItem key={icon.id} icon={icon}>
             <Puppy width={120} height={120} />
@@ -58,21 +50,19 @@ const Main = () => {
         ))}
         {flowIcons.map((icon) => (
           <IconItem key={icon.id} icon={icon}>
-            <Flower width={100} height={100} />
+            <Clover width={100} height={100} />
           </IconItem>
         ))}
         {circleIcons.map((icon) => (
           <IconItem key={icon.id} icon={icon}>
-            <Round width={100} height={100} />
+            <Heart width={100} height={100} />
           </IconItem>
         ))}
-        {starIcons.map((icon) => (
-          <IconItem key={icon.id} icon={icon}>
-            <Star width={20} height={20} />
-          </IconItem>
-        ))}
-        <MainLogo />
-        <MainFace />
+
+        <section className=" relative w-[100%] h-[100dvh]  flex flex-col items-center justify-center ">
+          <MainLogo />
+          <MainFace />
+        </section>
       </section>
     </main>
   );

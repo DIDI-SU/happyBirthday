@@ -1,35 +1,59 @@
-const MEMO_LIST = [
-  {
-    id: 0,
-    src: "/src/assets/memo.png",
-  },
-  {
-    id: 1,
-    src: "/src/assets/slimract.png",
-  },
-  {
-    id: 2,
-    src: "/src/assets/ractangle.png",
-  },
-  {
-    id: 3,
-    src: "/src/assets/round.png",
-  },
+import { useCallback } from "react";
+import {
+  Chacolate,
+  Curry,
+  Dance,
+  Lemon,
+  Mike,
+  Smile,
+  Spoon,
+  Strewberry,
+  Sun,
+} from "../../../page/memo/icon/MemoIcon";
+
+interface MemoItem {
+  id: number;
+  svg: React.ReactNode;
+}
+
+const MEMO_LIST: MemoItem[] = [
+  { id: 0, svg: <Strewberry /> },
+  { id: 1, svg: <Chacolate /> },
+  { id: 2, svg: <Curry /> },
+  { id: 3, svg: <Mike /> },
+  { id: 4, svg: <Lemon /> },
+  { id: 5, svg: <Dance /> },
+  { id: 6, svg: <Smile /> },
+  { id: 7, svg: <Spoon /> },
+  { id: 8, svg: <Sun /> },
 ];
 
 const MemoList = ({
   setCurrentMemo,
 }: {
-  setCurrentMemo: (id: number) => void;
+  setCurrentMemo: React.Dispatch<React.SetStateAction<number[] | null>>;
 }) => {
+  const handleClick = useCallback((id: number) => {
+    setCurrentMemo((prev: number[] | null) => {
+      if (prev === null) {
+        return [id];
+      }
+      if (prev?.includes(id)) {
+        return prev?.filter((item) => item !== id);
+      } else {
+        return [...prev, id];
+      }
+    });
+  }, []);
   return MEMO_LIST?.map((memo) => {
     return (
-      <img
+      <section
+        className="w-[30%] flex justify-center items-center cursor-pointer my-5"
         key={memo.id}
-        src={memo.src}
-        className="w-[30%] h-[300px] mr-3 "
-        onClick={() => setCurrentMemo(memo.id)}
-      />
+        onClick={() => handleClick(memo.id)}
+      >
+        {memo.svg}
+      </section>
     );
   });
 };

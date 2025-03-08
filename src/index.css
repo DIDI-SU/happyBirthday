@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Abordage";
+  src: url("/fonts/Abordage-Regular.woff2") format("woff2"),
+    url("/fonts/Abordage-Regular.woff") format("woff"),
+    url("/fonts/Abordage-Regular.ttf") format("truetype"),
+    url("/fonts/Abordage-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    font-family: Abordage, system-ui, sans-serif;
+  }
+}
