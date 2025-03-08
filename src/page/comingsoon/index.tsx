@@ -5,7 +5,7 @@ import useSound from "use-sound";
 const ComingSoon = () => {
   const { t } = useTranslation();
   const [isAnimating, setIsAnimating] = useState(false);
-  const [play] = useSound("/sounds/coming3.mp3", {
+  const [play] = useSound("/sounds/coming.mp3", {
     sprite: {
       short: [0, 500], // 0ms부터 1000ms(1초)까지만 재생
     },
@@ -40,7 +40,7 @@ const ComingSoon = () => {
         <h1 className="text-white mb-2 text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
           {t("comingsoon.date")}
         </h1>
-        <h2 className="text-white mt-3 text-base sm:text-xl md:text-2xl lg:text-2xl font-normal font-abordage">
+        <h2 className="text-white  text-base sm:text-xl md:text-2xl lg:text-2xl font-normal font-abordage">
           {t("comingsoon.title")}
         </h2>
       </div>
