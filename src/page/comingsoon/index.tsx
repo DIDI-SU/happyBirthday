@@ -37,7 +37,7 @@ const ComingSoon = () => {
         />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-white mb-2 text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
+        <h1 className="text-white  text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
           {t("comingsoon.date")}
         </h1>
         <h2 className="text-white  text-base sm:text-xl md:text-2xl lg:text-2xl font-normal font-abordage">
