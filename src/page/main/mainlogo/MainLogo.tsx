@@ -17,7 +17,6 @@ import {
 
 import { Images } from "../types/main";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const MainLogo = () => {
   const string1: Images[] = [

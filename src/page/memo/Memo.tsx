@@ -1,38 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import MemoList from "../../sectoin/memo/memolist/MemoList";
-
-import {
-  Chacolate,
-  Curry,
-  Dance,
-  Lemon,
-  Mike,
-  Smile,
-  Spoon,
-  Strewberry,
-  Sun,
-} from "./icon/MemoIcon";
 import { useNavigate, useSearchParams } from "react-router-dom";
-interface MemoItem {
-  id: number;
-  src: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-}
-
-const MEMO_LIST: Map<number, MemoItem> = new Map([
-  [0, { id: 0, src: Strewberry }],
-  [1, { id: 1, src: Chacolate }],
-  [2, { id: 2, src: Curry }],
-  [3, { id: 3, src: Mike }],
-  [4, { id: 4, src: Lemon }],
-  [5, { id: 5, src: Dance }],
-  [6, { id: 6, src: Smile }],
-  [7, { id: 7, src: Spoon }],
-  [8, { id: 8, src: Sun }],
-]);
 
 const Memo = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [currentMemo, setCurrentMemo] = useState<number[] | null>(null);
 
   const goToWrite = useCallback(() => {
