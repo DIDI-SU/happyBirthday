@@ -10,10 +10,21 @@
     url("/fonts/Abordage-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {
+  * {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
   html {
-    font-family: Abordage, system-ui, sans-serif;
+    font-family: "Abordage", -apple-system, BlinkMacSystemFont, system-ui,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
