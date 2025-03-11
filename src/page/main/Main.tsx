@@ -1,8 +1,8 @@
-import React from "react";
-// import { Puppy, Clover, Heart } from "../memo/icon/MemoIcon";
-import { Icon } from "./types/main";
-// import MainLogo from "./mainlogo/MainLogo";
-// import MainFace from "./mainface/MainFace";
+// import React from "react";
+// // import { Puppy, Clover, Heart } from "../memo/icon/MemoIcon";
+// import { Icon } from "./types/main";
+// // import MainLogo from "./mainlogo/MainLogo";
+// // import MainFace from "./mainface/MainFace";
 
 const Main = () => {
   // const IconItem = React.memo(
