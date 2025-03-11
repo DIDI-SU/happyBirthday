@@ -2,7 +2,9 @@ import { useState } from "react";
 import { ComingSoonImage } from "../memo/icon/MemoIcon";
 import { useTranslation } from "react-i18next";
 import useSound from "use-sound";
+import { useNavigate } from "react-router-dom";
 const ComingSoon = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [isAnimating, setIsAnimating] = useState(false);
   const [play] = useSound("/sounds/coming.mp3", {
@@ -17,6 +19,7 @@ const ComingSoon = () => {
       setIsAnimating(true);
       // 애니메이션 종료 후 상태 리셋
       setTimeout(() => setIsAnimating(false), 800); // 0.8초 후 리셋
+      navigate("/main");
     } catch (error) {
       console.error("오디오 재생 실패:", error);
     }
