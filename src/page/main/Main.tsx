@@ -40,31 +40,7 @@ const Main = () => {
   ];
 
   return (
-    <main className="w-full h-[100dvh] flex flex-col justify-center items-center bg-[#000000]">
-      {/* 메인 화면 */}
-      <section className=" w-[100%] h-[100dvh]  flex flex-col items-center justify-center relative ">
-        {puppyIcons.map((icon) => (
-          <IconItem key={icon.id} icon={icon}>
-            <Puppy width={120} height={120} />
-          </IconItem>
-        ))}
-        {flowIcons.map((icon) => (
-          <IconItem key={icon.id} icon={icon}>
-            <Clover width={100} height={100} />
-          </IconItem>
-        ))}
-        {circleIcons.map((icon) => (
-          <IconItem key={icon.id} icon={icon}>
-            <Heart width={100} height={100} />
-          </IconItem>
-        ))}
-
-        <section className=" relative w-[100%] h-[100dvh]  flex flex-col items-center justify-center ">
-          <MainLogo />
-          <MainFace />
-        </section>
-      </section>
-    </main>
+    <main className="w-full h-[100dvh] flex flex-col justify-center items-center bg-[#000000]"></main>
   );
 };
 

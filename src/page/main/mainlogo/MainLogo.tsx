@@ -1,42 +1,79 @@
-import Paper from "@/assets/image/paper.png";
-import Yellow from "@/assets/image/yellow_paper.png";
-import String1 from "@/assets/image/string1.png";
-import String2 from "@/assets/image/string2.png";
-import String3 from "@/assets/image/string3.png";
-import {
-  Ticket,
-  OrangeStar,
-  Clover,
-  BlueStar,
-  Book,
-  Puppy,
-  PostStemp,
-  Logo,
-  RedStar,
-} from "../../memo/icon/MemoIcon";
+import BgImage from "@/assets/image/bgImage.svg?react";
+import First from "@/assets/image/main_face.png";
 
-import { Images } from "../types/main";
-import { Link } from "react-router-dom";
+import ButtonGroups from "@/assets/image/buttonGroups.svg?react";
+import MainFace from "@/assets/image/mainFace.svg?react";
+
+import { useEffect } from "react";
 
 const MainLogo = () => {
-  const string1: Images[] = [
-    { id: 1, left: "40", top: "13", src: String1 },
-    { id: 2, left: "50", top: "15", src: String2 },
-    { id: 3, right: "30", bottom: "50", src: String3 },
-  ];
+  useEffect(() => {
+    // 특정 g 요소 찾기
+    const targetElement = document.querySelector(
+      'g[filter="url(#filter0_d_281_8)"]'
+    );
 
+    if (targetElement) {
+      // 클릭 이벤트 핸들러
+      const handleClick = () => {
+        // 이미 애니메이션 중이라면 리턴
+        if (targetElement.classList.contains("wobble-animation")) return;
+
+        // 애니메이션 클래스 추가
+        targetElement.classList.add("wobble-animation");
+
+        // 애니메이션 종료 후 클래스 제거
+        setTimeout(() => {
+          targetElement.classList.remove("wobble-animation");
+        }, 1000);
+      };
+
+      // 클릭 이벤트 리스너 추가
+      targetElement.addEventListener("click", handleClick);
+
+      // 클린업 함수
+      return () => {
+        targetElement.removeEventListener("click", handleClick);
+      };
+    }
+  }, []);
   return (
     <>
-      <section className="relative flex items-center justify-center w-[50%] ">
-        <div className="relative w-[100%] h-full z-50 -rotate-[2.19deg]">
+      <section className="relative flex items-center justify-center w-full h-full px-4 sm:px-6 md:px-8">
+        <div className="relative w-full flex justify-center">
+          {/* BgImage - 배경 이미지 */}
+          <BgImage className="w-[95%] sm:w-[90%] md:w-[85%] lg:w-[1000px] xl:w-[1000px] max-w-[1000px] h-auto z-[100]" />
+          <ButtonGroups className="top-[10%] z-[160] absolute w-[90%] sm:w-[90%] md:w-[85%] lg:w-[1000px] xl:w-[1000px] max-w-[1000px] h-auto " />
+
+          {/* First 이미지 */}
           <img
-            src={Yellow}
-            alt="yellow"
-            className="absolute top-5 left-0 w-[650px] h-[463px] rotate-[4.83deg]"
+            src={First}
+            alt="얼굴사진"
+            className="absolute bottom-[5%] z-[120] -rotate-[2.5deg]
+            w-[80%] 
+            sm:w-[70%] sm:max-w-[550px]
+            md:w-[70%] md:max-w-[650px]
+            lg:w-[75%] lg:max-w-[850px]
+            xl:w-[75%] xl:max-w-[850px]"
           />
-          <img src={Paper} alt="paper" className="w-[681px] h-[535px]" />
+
+          {/* MainImage 컴포넌트 */}
+          <div
+            className="absolute z-[140] 
+            bottom-[3%] 
+            sm:bottom-[4%] 
+            md:bottom-[5%]
+            w-[85%] 
+            sm:w-[70%] sm:max-w-[550px]
+            md:w-[70%] md:max-w-[650px]
+            lg:w-[75%] lg:max-w-[850px]
+            xl:w-[75%] xl:max-w-[850px]"
+          >
+            <MainFace className="w-full h-auto rotate-[1.5deg]" />
+          </div>
         </div>
-        <Puppy className="absolute  w-[120px] h-[120px] top-0 -left-5  z-[110] -rotate-[8.65deg] opacity-95" />
+
+        {/* <Puppy className="absolute  w-[120px] h-[120px] top-0 -left-5  z-[110] -rotate-[8.65deg] opacity-95" />
         <Ticket className="absolute  w-[272px] h-[455px] bottom-0 -left-10  z-[100] -rotate-[2.65deg] opacity-95" />
         <Book className="absolute  w-[110px] h-[110px] -bottom-10 left-[20%]  z-[100] -rotate-[10.65deg] opacity-95" />
         <OrangeStar className="absolute  w-[30px] h-[30px] bottom-[16%] right-[20%] z-[100] rotate-[8.65deg]" />
@@ -49,24 +86,10 @@ const MainLogo = () => {
               메모 페이지로 이동
             </div>
           </div>
-        </Link>
-        <Logo className="absolute  w-[309px] h-[156px] right-[25%] bottom-[5%] z-[100] rotate-[8.65deg] opacity-96" />
-        <RedStar className="absolute  w-[30px] bottom-0 left-[2%]   z-[100] rotate-[8.65deg]" />
+        </Link> */}
+
+        {/* <RedStar className="absolute  w-[30px] bottom-0 left-[2%]   z-[100] rotate-[8.65deg]" /> */}
       </section>
-      {string1.map((string) => (
-        <img
-          src={string.src}
-          alt="string"
-          key={string.id}
-          style={{
-            ...(string.left && { left: `${string.left}%` }),
-            ...(string.top && { top: `${string.top}%` }),
-            ...(string.bottom && { bottom: `${string.bottom}%` }),
-            ...(string.right && { right: `${string.right}%` }),
-          }}
-          className={`absolute z-20`}
-        />
-      ))}
     </>
   );
 };

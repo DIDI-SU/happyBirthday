@@ -6,6 +6,10 @@ export interface Icon {
   right?: number | string;
 }
 
+export interface BackgroundIcons extends Icon {
+  rotate?: number;
+}
+
 export interface Images extends Icon {
   src: string;
 }

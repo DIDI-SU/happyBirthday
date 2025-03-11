@@ -18,6 +18,9 @@ import Spoon from "@/assets/icons/spoon.svg?react";
 import Strewberry from "@/assets/icons/strewberry.svg?react";
 import Sun from "@/assets/icons/sun.svg?react";
 import ComingSoonImage from "@/assets/icons/comingsoon.svg?react";
+import Apple from "@/assets/icons/apple.svg?react";
+import Bunny from "@/assets/icons/bunny.svg?react";
+import Cotton from "@/assets/icons/cotton.svg?react";
 
 export {
   Puppy,
@@ -40,4 +43,7 @@ export {
   Strewberry,
   Sun,
   ComingSoonImage,
+  Apple,
+  Bunny,
+  Cotton,
 };
