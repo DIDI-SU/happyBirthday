@@ -283,3 +283,18 @@
   -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
   animation: heartbeat 1.5s ease-in-out infinite both;
 }
+
+g[filter="url(#filter0_d_281_8)"],
+#buttonGroups,
+#mainFace {
+  cursor: grab;
+  user-select: none;
+}
+
+g[filter="url(#filter0_d_281_8)"]:active,
+#buttonGroups:active,
+#mainFace:active,
+g[fill="url(#pattern0_281_8)"]:active,
+#ticket:active {
+  cursor: grabbing;
+}

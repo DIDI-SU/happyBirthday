@@ -1,94 +1,122 @@
-import BgImage from "@/assets/image/bgImage.svg?react";
+import BgImage from "@/assets/image/paperGroups.svg?react";
 import First from "@/assets/image/main_face.png";
 
-import ButtonGroups from "@/assets/image/buttonGroups.svg?react";
 import MainFace from "@/assets/image/mainFace.svg?react";
 
-import { useEffect } from "react";
+import DraggableSVGElement from "../component/draggables/DraggableSVGElement";
+import { useRef, useState } from "react";
+
+import {
+  Ticket,
+  Puppy,
+  Logo,
+  RedStar,
+  BlueStar,
+  PostStemp,
+  Clover,
+  Book,
+} from "../../memo/icon/MemoIcon";
 
 const MainLogo = () => {
-  useEffect(() => {
-    // 특정 g 요소 찾기
-    const targetElement = document.querySelector(
-      'g[filter="url(#filter0_d_281_8)"]'
-    );
+  const currentPicRef = useRef([
+    <g
+      key="first"
+      transform="translate(-190 -140)"
+      onClick={() => handlePicChange()}
+    >
+      <DraggableSVGElement rotation={-2.5}>
+        <image
+          href={First}
+          className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%]"
+        />
+      </DraggableSVGElement>
+    </g>,
+    <g
+      key="second"
+      transform="translate(-190 -140)"
+      onClick={() => handlePicChange()}
+    >
+      <DraggableSVGElement rotation={1.5}>
+        <MainFace className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%]" />
+      </DraggableSVGElement>
+    </g>,
+  ]);
 
-    if (targetElement) {
-      // 클릭 이벤트 핸들러
-      const handleClick = () => {
-        // 이미 애니메이션 중이라면 리턴
-        if (targetElement.classList.contains("wobble-animation")) return;
+  const handlePicChange = () => {
+    const newImages = [...currentPicRef.current];
+    newImages.reverse();
+    currentPicRef.current = newImages;
+    // 강제 리렌더링을 위한 상태 업데이트
+    setForceUpdate((prev) => !prev);
+  };
 
-        // 애니메이션 클래스 추가
-        targetElement.classList.add("wobble-animation");
+  // 강제 리렌더링을 위한 상태
+  const [forceUpdate, setForceUpdate] = useState(false);
 
-        // 애니메이션 종료 후 클래스 제거
-        setTimeout(() => {
-          targetElement.classList.remove("wobble-animation");
-        }, 1000);
-      };
+  console.log(forceUpdate);
 
-      // 클릭 이벤트 리스너 추가
-      targetElement.addEventListener("click", handleClick);
-
-      // 클린업 함수
-      return () => {
-        targetElement.removeEventListener("click", handleClick);
-      };
-    }
-  }, []);
   return (
     <>
-      <section className="relative flex items-center justify-center w-full h-full px-4 sm:px-6 md:px-8">
+      <section className="relative flex items-center justify-center w-full px-4 sm:px-6 md:px-8">
         <div className="relative w-full flex justify-center">
-          {/* BgImage - 배경 이미지 */}
-          <BgImage className="w-[95%] sm:w-[90%] md:w-[85%] lg:w-[1000px] xl:w-[1000px] max-w-[1000px] h-auto z-[100]" />
-          <ButtonGroups className="top-[10%] z-[160] absolute w-[90%] sm:w-[90%] md:w-[85%] lg:w-[1000px] xl:w-[1000px] max-w-[1000px] h-auto " />
-
-          {/* First 이미지 */}
-          <img
-            src={First}
-            alt="얼굴사진"
-            className="absolute bottom-[5%] z-[120] -rotate-[2.5deg]
-            w-[80%] 
-            sm:w-[70%] sm:max-w-[550px]
-            md:w-[70%] md:max-w-[650px]
-            lg:w-[75%] lg:max-w-[850px]
-            xl:w-[75%] xl:max-w-[850px]"
-          />
-
-          {/* MainImage 컴포넌트 */}
-          <div
-            className="absolute z-[140] 
-            bottom-[3%] 
-            sm:bottom-[4%] 
-            md:bottom-[5%]
-            w-[85%] 
-            sm:w-[70%] sm:max-w-[550px]
-            md:w-[70%] md:max-w-[650px]
-            lg:w-[75%] lg:max-w-[850px]
-            xl:w-[75%] xl:max-w-[850px]"
+          <svg
+            viewBox="0 0 1000 1000"
+            className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[1200px] xl:w-[1200px] max-w-[1200px] "
           >
-            <MainFace className="w-full h-auto rotate-[1.5deg]" />
-          </div>
+            {/* 배경 이미지 */}
+            <g transform="translate(400 400)">
+              <g transform="translate(-250 -250)">
+                <BgImage className="w-full h-auto z-[100] " />
+              </g>
+
+              {/* 얼굴 이미지 */}
+              {currentPicRef.current}
+              {/* <g transform="translate(-250 -160)">
+                <ButtonGroups className=" w-full h-auto z-[180]" />
+              </g> */}
+              <g transform="translate(-50 260)">
+                <DraggableSVGElement rotation={-10.5}>
+                  <Book width={128} height={156} className="z-[140]" />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(300 -200)">
+                <DraggableSVGElement rotation={10.5}>
+                  <PostStemp width={128} height={156} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(380 -60)">
+                <DraggableSVGElement rotation={10.5}>
+                  <Clover width={128} height={156} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(450 -100)">
+                <DraggableSVGElement rotation={10.5}>
+                  <BlueStar width={50} height={50} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(100 160)">
+                <DraggableSVGElement rotation={-10.5}>
+                  <Logo width={309} height={154} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(-300 -200)">
+                <DraggableSVGElement rotation={-10.5}>
+                  <Puppy width={110} height={110} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(-320 -100)">
+                <DraggableSVGElement>
+                  <Ticket width={371} height={481} className="z-[130]" />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(-260 110)">
+                <DraggableSVGElement>
+                  <RedStar width={50} height={50} />
+                </DraggableSVGElement>
+              </g>
+            </g>
+          </svg>
         </div>
-
-        {/* <Puppy className="absolute  w-[120px] h-[120px] top-0 -left-5  z-[110] -rotate-[8.65deg] opacity-95" />
-        <Ticket className="absolute  w-[272px] h-[455px] bottom-0 -left-10  z-[100] -rotate-[2.65deg] opacity-95" />
-        <Book className="absolute  w-[110px] h-[110px] -bottom-10 left-[20%]  z-[100] -rotate-[10.65deg] opacity-95" />
-        <OrangeStar className="absolute  w-[30px] h-[30px] bottom-[16%] right-[20%] z-[100] rotate-[8.65deg]" />
-        <BlueStar className="absolute  w-[30px] h-[30px] top-44  right-[20%] z-[100] rotate-[8.65deg]" />
-        <PostStemp className="absolute  w-[128px] h-[156px] top-0  right-[20%] z-[100] rotate-[8.65deg]" />
-        <Link to="/memo">
-          <div className="group">
-            <Clover className="absolute  w-[90px] h-[90px] bottom-48  right-[20%] z-[100] rotate-[8.65deg] opacity-96" />
-            <div className="invisible group-hover:visible absolute bottom-[32%]  right-[10%] z-[100] -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap">
-              메모 페이지로 이동
-            </div>
-          </div>
-        </Link> */}
-
-        {/* <RedStar className="absolute  w-[30px] bottom-0 left-[2%]   z-[100] rotate-[8.65deg]" /> */}
       </section>
     </>
   );
