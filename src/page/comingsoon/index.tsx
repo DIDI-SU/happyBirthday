@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ComingSoonImage } from "../memo/icon/MemoIcon";
+import { ComingSoonImage } from "../selectIcon/icon/MemoIcon";
 import { useTranslation } from "react-i18next";
 import useSound from "use-sound";
 import { useNavigate } from "react-router-dom";

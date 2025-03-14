@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Clover, Puppy } from "../memo/icon/MemoIcon";
+import { Clover, Puppy } from "../selectIcon/icon/MemoIcon";
 import { useMemo } from "react";
 
 const Write = () => {

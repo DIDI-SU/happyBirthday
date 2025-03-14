@@ -1,7 +1,7 @@
 import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
 import Main from "../page/main/index";
-import Memo from "../page/memo/index";
+import SelectIcon from "../page/selectIcon/index";
 // import Write from "../page/write/Write";
 import MainLayout from "../layout/MainLayout";
 
@@ -20,7 +20,7 @@ const routerItems = [
       },
       {
         path: "memo",
-        element: <Memo />,
+        element: <SelectIcon />,
       },
       // {
       //   path: "write/:memo",

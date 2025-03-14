@@ -9,7 +9,7 @@ import {
   Spoon,
   Strewberry,
   Sun,
-} from "../../../page/memo/icon/MemoIcon";
+} from "../../../page/selectIcon/icon/MemoIcon";
 
 interface MemoItem {
   id: number;

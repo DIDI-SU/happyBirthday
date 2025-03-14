@@ -16,7 +16,7 @@ import {
   Clover,
   Book,
   OrangeStar,
-} from "../../memo/icon/MemoIcon";
+} from "../../selectIcon/icon/MemoIcon";
 
 import { useNavigate } from "react-router-dom";
 

@@ -3,7 +3,7 @@ import MemoList from "../../sectoin/memo/memolist/MemoList";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Memo = () => {
+const SelectIcon = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -34,4 +34,4 @@ const Memo = () => {
   );
 };
 
-export default Memo;
+export default SelectIcon;
