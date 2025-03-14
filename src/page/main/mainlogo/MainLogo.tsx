@@ -18,7 +18,10 @@ import {
   OrangeStar,
 } from "../../memo/icon/MemoIcon";
 
+import { useNavigate } from "react-router-dom";
+
 const MainLogo = () => {
+  const navigate = useNavigate();
   const currentPicRef = useRef([
     <g
       key="first"
@@ -85,7 +88,10 @@ const MainLogo = () => {
                   <PostStemp width={128} height={156} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(380 20)">
+              <g
+                transform="translate(380 20)"
+                onClick={() => navigate("/memo")}
+              >
                 <DraggableSVGElement rotation={10.5}>
                   <Clover width={99} height={99} />
                 </DraggableSVGElement>

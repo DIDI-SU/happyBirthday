@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import {
   Chacolate,
   Curry,
@@ -45,17 +45,29 @@ const MemoList = ({
       }
     });
   }, []);
-  return MEMO_LIST?.map((memo) => {
-    return (
-      <section
-        className="w-[30%] flex justify-center items-center cursor-pointer my-5"
-        key={memo.id}
-        onClick={() => handleClick(memo.id)}
-      >
-        {memo.svg}
-      </section>
-    );
-  });
+  return (
+    <svg viewBox="0 0 500 500">
+      <g transform="translate(40 45)">
+        {MEMO_LIST.map((item, index) => {
+          const row = Math.floor(index / 3);
+          const col = index % 3;
+          return (
+            <g
+              key={item.id}
+              transform={`translate(${col * 160} ${row * 160})`}
+              onClick={() => handleClick(item.id)}
+              className="cursor-pointer hover:opacity-80"
+            >
+              {React.cloneElement(item.svg as React.ReactElement, {
+                width: 115,
+                height: 115,
+              })}
+            </g>
+          );
+        })}
+      </g>
+    </svg>
+  );
 };
 
 export default MemoList;

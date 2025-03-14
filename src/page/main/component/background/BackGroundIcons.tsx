@@ -64,7 +64,7 @@ const BackGroundIcons = ({ children }: { children: React.ReactNode }) => {
   ];
 
   return (
-    <section className="w-[100%] flex flex-col items-center justify-center relative z-0">
+    <section className="w-full h-[100dvh] fixed inset-0 flex items-center justify-center">
       <svg
         viewBox="0 0 1000 1000"
         className="absolute inset-0 w-full h-full"
