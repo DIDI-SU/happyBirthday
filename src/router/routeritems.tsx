@@ -2,6 +2,7 @@ import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
 import Main from "../page/main/index";
 import SelectIcon from "../page/selectIcon/index";
+import Loading from "../page/selectIcon/loading";
 // import Write from "../page/write/Write";
 import MainLayout from "../layout/MainLayout";
 
@@ -22,10 +23,10 @@ const routerItems = [
         path: "memo",
         element: <SelectIcon />,
       },
-      // {
-      //   path: "write/:memo",
-      //   element: <Write />,
-      // },
+      {
+        path: "loading",
+        element: <Loading />,
+      },
       {
         path: "*",
         element: <Error404 />,

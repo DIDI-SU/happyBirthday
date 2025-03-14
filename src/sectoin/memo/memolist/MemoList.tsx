@@ -10,17 +10,14 @@ import {
   Strewberry,
   Sun,
 } from "../../../page/selectIcon/icon/MemoIcon";
+import { MemoItem } from "../../../page/selectIcon/type/selectIcon";
 
-interface MemoListsProps {
-  setCurrentMemo: React.Dispatch<React.SetStateAction<number[] | null>>;
-  currentMemo: number[] | null;
-}
-
-interface MemoItem {
-  id: number;
-  svg: React.ReactNode;
-}
 interface MemoListProps {
+  currentMemoId: number[] | null;
+  setCurrentMemoId: (newCurrentMemoId: number | null) => void;
+}
+
+interface SelectMemoListProps {
   data: MemoItem[];
   handleClick: (id: number) => void;
   currentMemo: number[] | null;
@@ -38,8 +35,8 @@ const MEMO_LIST: MemoItem[] = [
   { id: 8, svg: <Sun /> },
 ];
 
-const MemoList2 = React.memo(
-  ({ data, handleClick, currentMemo }: MemoListProps) => {
+const SelectMemoList = React.memo(
+  ({ data, handleClick, currentMemo }: SelectMemoListProps) => {
     return data.map((item, index) => {
       const row = Math.floor(index / 3);
       const col = index % 3;
@@ -72,26 +69,18 @@ const MemoList2 = React.memo(
   }
 );
 
-const MemoList = ({ setCurrentMemo, currentMemo }: MemoListsProps) => {
+const MemoList = ({ setCurrentMemoId, currentMemoId }: MemoListProps) => {
   const handleClick = useCallback((id: number) => {
-    setCurrentMemo((prev: number[] | null) => {
-      if (prev === null) {
-        return [id];
-      }
-      if (prev?.includes(id)) {
-        return prev?.filter((item) => item !== id);
-      } else {
-        return [...prev, id];
-      }
-    });
+    setCurrentMemoId(id);
   }, []);
+
   return (
     <svg viewBox="0 0 550 550">
       <g transform="translate(40 45)">
-        <MemoList2
+        <SelectMemoList
           data={MEMO_LIST}
           handleClick={handleClick}
-          currentMemo={currentMemo}
+          currentMemo={currentMemoId}
         />
       </g>
     </svg>
