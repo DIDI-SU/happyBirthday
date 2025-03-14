@@ -1,23 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import MemoList from "../../sectoin/memo/memolist/MemoList";
-import { useNavigate, useSearchParams } from "react-router-dom";
+// import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SelectIcon = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  // const navigate = useNavigate();
+  // const [searchParams] = useSearchParams();
   const [currentMemo, setCurrentMemo] = useState<number[] | null>(null);
 
-  const goToWrite = useCallback(() => {
-    navigate(`/write/${currentMemo?.join(",")}`);
-  }, [currentMemo, searchParams]);
+  // const goToWrite = useCallback(() => {
+  //   navigate(`/write/${currentMemo?.join(",")}`);
+  // }, [currentMemo, searchParams]);
 
-  useEffect(() => {
-    if (currentMemo?.length === 2) {
-      goToWrite();
-    }
-  }, [goToWrite]);
+  // useEffect(() => {
+  //   if (currentMemo?.length === 2) {
+  //     goToWrite();
+  //   }
+  // }, [goToWrite]);
 
   return (
     <section className="flex flex-col items-center justify-center h-full w-full p-10">
@@ -29,7 +29,7 @@ const SelectIcon = () => {
           {t("memo.title2")}
         </p>
       </div>
-      <MemoList setCurrentMemo={setCurrentMemo} />
+      <MemoList setCurrentMemo={setCurrentMemo} currentMemo={currentMemo} />
     </section>
   );
 };

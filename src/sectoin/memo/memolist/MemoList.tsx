@@ -11,9 +11,19 @@ import {
   Sun,
 } from "../../../page/selectIcon/icon/MemoIcon";
 
+interface MemoListsProps {
+  setCurrentMemo: React.Dispatch<React.SetStateAction<number[] | null>>;
+  currentMemo: number[] | null;
+}
+
 interface MemoItem {
   id: number;
   svg: React.ReactNode;
+}
+interface MemoListProps {
+  data: MemoItem[];
+  handleClick: (id: number) => void;
+  currentMemo: number[] | null;
 }
 
 const MEMO_LIST: MemoItem[] = [
@@ -28,11 +38,41 @@ const MEMO_LIST: MemoItem[] = [
   { id: 8, svg: <Sun /> },
 ];
 
-const MemoList = ({
-  setCurrentMemo,
-}: {
-  setCurrentMemo: React.Dispatch<React.SetStateAction<number[] | null>>;
-}) => {
+const MemoList2 = React.memo(
+  ({ data, handleClick, currentMemo }: MemoListProps) => {
+    return data.map((item, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+
+      return (
+        <g
+          key={item.id}
+          transform={`translate(${col * 160} ${row * 160})`}
+          style={{
+            transformOrigin: `${col * 160 + 57.5}px ${row * 160 + 57.5}px`,
+          }}
+          onClick={() => handleClick(item.id)}
+          className={`cursor-pointer opacity-80 ${
+            currentMemo?.includes(item.id) ? "memo-icon" : ""
+          }`}
+        >
+          {React.cloneElement(item.svg as React.ReactElement, {
+            width: 115,
+            height: 115,
+          })}
+        </g>
+      );
+    });
+  },
+  (prevProps, nextProps) => {
+    return (
+      prevProps.data === nextProps.data &&
+      prevProps.currentMemo === nextProps.currentMemo
+    );
+  }
+);
+
+const MemoList = ({ setCurrentMemo, currentMemo }: MemoListsProps) => {
   const handleClick = useCallback((id: number) => {
     setCurrentMemo((prev: number[] | null) => {
       if (prev === null) {
@@ -46,25 +86,13 @@ const MemoList = ({
     });
   }, []);
   return (
-    <svg viewBox="0 0 500 500">
+    <svg viewBox="0 0 550 550">
       <g transform="translate(40 45)">
-        {MEMO_LIST.map((item, index) => {
-          const row = Math.floor(index / 3);
-          const col = index % 3;
-          return (
-            <g
-              key={item.id}
-              transform={`translate(${col * 160} ${row * 160})`}
-              onClick={() => handleClick(item.id)}
-              className="cursor-pointer hover:opacity-80"
-            >
-              {React.cloneElement(item.svg as React.ReactElement, {
-                width: 115,
-                height: 115,
-              })}
-            </g>
-          );
-        })}
+        <MemoList2
+          data={MEMO_LIST}
+          handleClick={handleClick}
+          currentMemo={currentMemo}
+        />
       </g>
     </svg>
   );
