@@ -4,7 +4,7 @@ import First from "@/assets/image/main_face.png";
 import MainFace from "@/assets/image/mainFace.svg?react";
 
 import DraggableSVGElement from "../component/draggables/DraggableSVGElement";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Ticket,
@@ -15,37 +15,38 @@ import {
   PostStemp,
   Clover,
   Book,
+  OrangeStar,
 } from "../../memo/icon/MemoIcon";
 
 const MainLogo = () => {
   const currentPicRef = useRef([
     <g
       key="first"
-      transform="translate(-190 -140)"
+      transform="translate(-220 -140)"
       onClick={() => handlePicChange()}
     >
-      <DraggableSVGElement rotation={-2.5}>
+      <DraggableSVGElement>
         <image
           href={First}
-          className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%]"
+          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%] "
         />
       </DraggableSVGElement>
     </g>,
     <g
       key="second"
-      transform="translate(-190 -140)"
+      transform="translate(-220 -140)"
       onClick={() => handlePicChange()}
     >
-      <DraggableSVGElement rotation={1.5}>
-        <MainFace className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%]" />
+      <DraggableSVGElement>
+        <MainFace className="w-[70%] sm:w-[70%] md:w-[70%] lg:w-[70%] xl:w-[70%] " />
       </DraggableSVGElement>
     </g>,
   ]);
 
   const handlePicChange = () => {
     const newImages = [...currentPicRef.current];
-    newImages.reverse();
-    currentPicRef.current = newImages;
+    const reversedImages = newImages.reverse();
+    currentPicRef.current = reversedImages;
     // 강제 리렌더링을 위한 상태 업데이트
     setForceUpdate((prev) => !prev);
   };
@@ -53,7 +54,9 @@ const MainLogo = () => {
   // 강제 리렌더링을 위한 상태
   const [forceUpdate, setForceUpdate] = useState(false);
 
-  console.log(forceUpdate);
+  useEffect(() => {
+    console.log("forceUpdate", forceUpdate);
+  }, [forceUpdate]);
 
   return (
     <>
@@ -65,18 +68,16 @@ const MainLogo = () => {
           >
             {/* 배경 이미지 */}
             <g transform="translate(400 400)">
-              <g transform="translate(-250 -250)">
+              <g transform="translate(-250 -250)" rotate={2.5}>
                 <BgImage className="w-full h-auto z-[100] " />
               </g>
 
               {/* 얼굴 이미지 */}
               {currentPicRef.current}
-              {/* <g transform="translate(-250 -160)">
-                <ButtonGroups className=" w-full h-auto z-[180]" />
-              </g> */}
-              <g transform="translate(-50 260)">
+
+              <g transform="translate(-50 260)" className="z-[130]">
                 <DraggableSVGElement rotation={-10.5}>
-                  <Book width={128} height={156} className="z-[140]" />
+                  <Book width={128} height={156} className=" opacity-[1]" />
                 </DraggableSVGElement>
               </g>
               <g transform="translate(300 -200)">
@@ -84,18 +85,23 @@ const MainLogo = () => {
                   <PostStemp width={128} height={156} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(380 -60)">
+              <g transform="translate(380 20)">
                 <DraggableSVGElement rotation={10.5}>
-                  <Clover width={128} height={156} />
+                  <Clover width={99} height={99} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(450 -100)">
-                <DraggableSVGElement rotation={10.5}>
-                  <BlueStar width={50} height={50} />
+              <g transform="translate(420 -100)">
+                <DraggableSVGElement rotation={18.5}>
+                  <BlueStar width={39} height={39} />
+                </DraggableSVGElement>
+              </g>
+              <g transform="translate(380 240)">
+                <DraggableSVGElement rotation={-18.5}>
+                  <OrangeStar width={39} height={39} />
                 </DraggableSVGElement>
               </g>
               <g transform="translate(100 160)">
-                <DraggableSVGElement rotation={-10.5}>
+                <DraggableSVGElement>
                   <Logo width={309} height={154} />
                 </DraggableSVGElement>
               </g>
@@ -104,9 +110,9 @@ const MainLogo = () => {
                   <Puppy width={110} height={110} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(-320 -100)">
+              <g transform="translate(-320 -100)" className="z-[140]">
                 <DraggableSVGElement>
-                  <Ticket width={371} height={481} className="z-[130]" />
+                  <Ticket width={371} height={481} />
                 </DraggableSVGElement>
               </g>
               <g transform="translate(-260 110)">
