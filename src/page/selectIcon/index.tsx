@@ -12,7 +12,7 @@ const SelectIcon = () => {
 
   const goToWrite = useCallback(() => {
     if (currentMemoId?.length === 2) {
-      navigate(`/loading`);
+      navigate(`/memo?id=${currentMemoId[0]}&id=${currentMemoId[1]}`);
     }
   }, [currentMemoId]);
 

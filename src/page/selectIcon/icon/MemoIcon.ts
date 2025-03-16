@@ -21,6 +21,8 @@ import ComingSoonImage from "@/assets/icons/comingsoon.svg?react";
 import Apple from "@/assets/icons/apple.svg?react";
 import Bunny from "@/assets/icons/bunny.svg?react";
 import Cotton from "@/assets/icons/cotton.svg?react";
+import Primrose from "@/assets/icons/promise.svg?react";
+import Gift from "@/assets/icons/gift.svg?react";
 
 export {
   Puppy,
@@ -46,4 +48,6 @@ export {
   Apple,
   Bunny,
   Cotton,
+  Primrose,
+  Gift,
 };

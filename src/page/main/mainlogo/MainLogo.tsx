@@ -90,7 +90,7 @@ const MainLogo = () => {
               </g>
               <g
                 transform="translate(380 20)"
-                onClick={() => navigate("/memo")}
+                onClick={() => navigate("/selectIcon")}
               >
                 <DraggableSVGElement rotation={10.5}>
                   <Clover width={99} height={99} />
