@@ -120,9 +120,9 @@ const Memo = () => {
       setIsLoading(false);
     }, 3500);
   }, []);
-  //   if (isLoading) {
-  //     return <Loading />;
-  //   }
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <section className="flex flex-col items-center justify-center w-full h-screen ">
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
