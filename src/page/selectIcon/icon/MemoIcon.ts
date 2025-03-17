@@ -23,6 +23,8 @@ import Bunny from "@/assets/icons/bunny.svg?react";
 import Cotton from "@/assets/icons/cotton.svg?react";
 import Primrose from "@/assets/icons/promise.svg?react";
 import Gift from "@/assets/icons/gift.svg?react";
+import Home from "@/assets/icons/home.svg?react";
+import Archive from "@/assets/icons/eye.svg?react";
 
 export {
   Puppy,
@@ -50,4 +52,6 @@ export {
   Cotton,
   Primrose,
   Gift,
+  Home,
+  Archive,
 };

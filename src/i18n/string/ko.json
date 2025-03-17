@@ -13,47 +13,66 @@
       "clover": {
         "title": "클로버(Clover) 컨페티",
         "subtitle": "행운이 가득한 호영같은",
-        "description": "오늘도 좋은 하루 보냉"
+        "description1": "오늘도 좋은 하루 보냉",
+        "description2": "",
+        "description3": "",
+        "description4": ""
       },
       "puppy": {
         "title": "강아지(Puppy) 컨페티",
         "subtitle": "행복과 즐거움을 선사하는",
-        "description": "마루티쓰 강아디"
+        "description1": "마루티쓰 강아디",
+        "description2": "",
+        "description3": "",
+        "description4": ""
       },
       "heart": {
         "title": "하트(Heart) 컨페티",
         "subtitle": "사랑 가득한 호영을 닮은",
-        "description": "ㅋㅋㅋㅋㅋ이거 귀엽넹ㅋㅋㅋ\n하투하투하투"
+        "description1": "ㅋㅋㅋㅋㅋ이거 귀엽넹ㅋㅋㅋ",
+        "description2": "하투하투하투",
+        "description3": "하투하투하투",
+        "description4": "하투하투하투"
       },
       "primrose": {
         "title": "흰앵초(Primrose) 컨페티",
         "subtitle": "3월의 호영을 닮은",
-        "description": "3월 26일의 탄생화"
+        "description1": "3월 26일의 탄생화",
+        "description2": "행운과 복을 상징하는 꽃",
+        "description3": "",
+        "description4": ""
       },
       "book": {
         "title": "너라는 책(Book) 컨페티",
         "subtitle": "우리의 모든 순간이 담겨있는",
-        "description": "여기 히어러이트, 내가 제일 좋아하는 부분 우리 생애는 여기 있는 곳"
+        "description1": "여기 하이라이트,",
+        "description2": "내가 제일 좋아하는 부분",
+        "description3": "여기 하이라이트",
+        "description4": "우리 설레는 얘기 있는 곳"
       },
       "gift": {
         "title": "선물(Gift) 컨페티",
         "subtitle": "이렇게 매년 생일 나와 함께 해줘",
-        "description": "웃어줘 환하게 웃어줘 환하게 웃어줘 환하게 열번만 백번만 천번만"
+        "description1": "웃어줘 환하게 웃어줘",
+        "description2": "환하게 웃어줘 환하게",
+        "description3": "열번만 백번만 천번만",
+        "description4": "천번만 백번만 열번만"
       },
       "bunny": {
         "title": "토끼(Bunny) 컨페티",
         "subtitle": "평생이 토끼인 호영같은",
-        "description": "3월 26일의 단짝친, 행복의 열쇠, 귀사랑을 상징, 행복과 복을 가져다주는 꽃"
+        "description1": "3월 26일의 단짝친, ",
+        "description2": "행복의 열쇠, ",
+        "description3": "귀사랑을 상징, ",
+        "description4": "행복과 복을 가져다주는 꽃"
       },
       "cotton": {
         "title": "솜(Cotton) 컨페티",
         "subtitle": "포근함이 되어주는 호영을 닮은",
-        "description": "코튼향을 좋아하는 호영.(실제로 코튼향이 났다는 목격담이 여럿 들리기도 했던...)"
-      },
-      "apple": {
-        "title": "사과(Apple) 컨페티",
-        "subtitle": "비타민같은 호영을 닮은",
-        "description": "3월 26일의 단짝친, 행복과 특별한 순간, 행복과 복을 가져다주는 꽃"
+        "description1": "코튼향을 좋아하는 호영.",
+        "description2": "(실제로 코튼향이 났다는 목격담이 여럿 들리기도 했던...)",
+        "description3": "",
+        "description4": ""
       }
     }
   }

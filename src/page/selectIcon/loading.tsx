@@ -46,7 +46,7 @@ const Loading = () => {
         {memos.map((memo, index) => (
           <div
             key={memo.id + Math.random()}
-            className={`absolute fall${index}`}
+            className={`absolute fall${index} w-[100px] h-[100px]`}
           >
             {memo.svg}
           </div>
