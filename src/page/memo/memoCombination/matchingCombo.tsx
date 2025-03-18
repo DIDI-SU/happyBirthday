@@ -143,7 +143,9 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
                 }
               }}
             />
-            <button onClick={postMemo}>저장</button>s
+            <button onClick={postMemo} className="bg-blue-500 rounded-md">
+              저장
+            </button>
           </foreignObject>
         </svg>
       </div>
