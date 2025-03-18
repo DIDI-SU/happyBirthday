@@ -120,13 +120,13 @@ const Memo = () => {
       setIsLoading(false);
     }, 3500);
   }, []);
-  if (isLoading) {
-    return <Loading />;
-  }
+  //   if (isLoading) {
+  //     return <Loading />;
+  //   }
   return (
-    <section className="flex flex-col items-center justify-center w-full h-screen ">
+    <section className="flex flex-col items-center justify-center w-full h-full ">
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
-      <div className="flex  items-center justify-center w-full mx-auto  bottom-4 fixed">
+      <div className="flex  items-center justify-center w-full mx-auto absolute bottom-1 ">
         <Link
           to="/"
           className="flex flex-col items-center justify-center mr-4 "

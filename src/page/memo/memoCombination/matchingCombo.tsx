@@ -12,17 +12,18 @@ import {
 } from "../../selectIcon/icon/MemoIcon";
 import { MemoItem } from "../../selectIcon/type/selectIcon";
 import { useTranslation } from "react-i18next";
+import { ref, get } from "firebase/database";
 
 const MEMO_LIST: MemoItem[] = [
-  { id: 0, svg: <Clover width={250} height={250} /> },
-  { id: 1, svg: <Puppy width={250} height={250} /> },
-  { id: 2, svg: <Heart width={250} height={250} /> },
-  { id: 3, svg: <Primrose width={250} height={250} /> },
-  { id: 4, svg: <Book width={250} height={250} /> },
-  { id: 5, svg: <Gift width={250} height={250} /> },
-  { id: 6, svg: <Bunny width={250} height={250} /> },
-  { id: 7, svg: <Cotton width={250} height={250} /> },
-  { id: 8, svg: <Apple width={250} height={250} /> },
+  { id: 0, svg: <Clover width={200} height={200} /> },
+  { id: 1, svg: <Puppy width={200} height={200} /> },
+  { id: 2, svg: <Heart width={200} height={200} /> },
+  { id: 3, svg: <Primrose width={200} height={200} /> },
+  { id: 4, svg: <Book width={200} height={200} /> },
+  { id: 5, svg: <Gift width={200} height={200} /> },
+  { id: 6, svg: <Bunny width={200} height={200} /> },
+  { id: 7, svg: <Cotton width={200} height={200} /> },
+  { id: 8, svg: <Apple width={200} height={200} /> },
 ];
 
 interface MemoCombination {
@@ -70,48 +71,49 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
   const result = findMatchingCombination();
 
   return (
-    <section className="flex flex-col items-center justify-center w-full p-[16px]">
+    <section className="flex flex-col items-center justify-center w-full px-[16px] absolute">
       <div className="flex flex-col items-center justify-center ">
         <p className=" text-white text-nowrap text-[15px] ">
           {t(`confetti.characters.${result?.name}.subtitle`)}
         </p>
-        <p className=" text-white text-nowrap text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[45px]">
+        <p className=" text-white text-nowrap text-[25px] ">
           {t(`confetti.characters.${result?.name}.title`)}
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center h-[55dvh] w-full mx-auto ">
-        <svg viewBox="0 0 250 250">
+      <div className="flex flex-col items-center justify-center max-h-[50dvh] w-full mx-auto ">
+        <svg viewBox="0 0 200 200">
           {MEMO_LIST.find((item) => item.id === result?.id)?.svg}
           <foreignObject
-            x="65%"
-            y="65%"
-            width={180}
+            x="70%"
+            y="72%"
+            width={170}
             height={170}
-            transform="translate(-125,-115)"
+            transform="translate(-125,-125)"
+            className="p-6 "
           >
             <textarea
-              className=" w-full h-full bg-transparent border-dotted border-2 border-black rounded-lg p-2 resize-none "
+              className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg p-2 resize-none  text-gray-600 text-opacity-80 text-[12px]"
               placeholder="호영을 위한 메세지를 작성해주세요"
             />
           </foreignObject>
         </svg>
       </div>
-      <div className="flex flex-col items-center justify-center w-full h-full mb-4 mt-4 gap-1">
-        <p className=" text-white  text-nowrap text-md ">
+      <div className="flex flex-col items-center justify-center w-full  pt-3 ">
+        <p className=" text-white  text-nowrap text-[18px] leading-6 ">
           {t(`confetti.characters.${result?.name}.description1`)}
         </p>
         {t(`confetti.characters.${result?.name}.description2`) && (
-          <p className=" text-nowrap  text-white text-md">
+          <p className=" text-nowrap  text-white text-[18px] leading-6">
             {t(`confetti.characters.${result?.name}.description2`)}
           </p>
         )}
         {t(`confetti.characters.${result?.name}.description3`) && (
-          <p className="text-nowrap  text-white  text-md ">
+          <p className="text-nowrap  text-white  text-[18px] leading-6">
             {t(`confetti.characters.${result?.name}.description3`)}
           </p>
         )}
         {t(`confetti.characters.${result?.name}.description4`) && (
-          <p className=" text-nowrap  text-white text-md ">
+          <p className=" text-nowrap  text-white text-[18px] leading-6">
             {t(`confetti.characters.${result?.name}.description4`)}
           </p>
         )}
