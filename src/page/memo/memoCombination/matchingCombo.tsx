@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   Clover,
   Puppy,
@@ -12,8 +12,11 @@ import {
 } from "../../selectIcon/icon/MemoIcon";
 import { MemoItem } from "../../selectIcon/type/selectIcon";
 import { useTranslation } from "react-i18next";
-import { ref, get } from "firebase/database";
 
+import { useContext, useState } from "react";
+import { FCMContext } from "../../../context/FCMContext";
+import { setDoc, doc } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={200} height={200} /> },
   { id: 1, svg: <Puppy width={200} height={200} /> },
@@ -40,6 +43,41 @@ interface MatchingComboProps {
 const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
+  const { database } = useContext(FCMContext);
+  const [message, setMessage] = useState({ id: 0, messages: "" });
+  const navigate = useNavigate();
+
+  const postMemo = async () => {
+    const newMemoId = uuidv4();
+    try {
+      if (!database || message.messages?.length === 0) return;
+      await setDoc(doc(database, "message", newMemoId), {
+        memoId: message.id,
+        memoText: message.messages,
+        createdAt: new Date(),
+      });
+      setMessage({ id: 0, messages: "" });
+      navigate("/achive");
+    } catch (error) {
+      console.error("Setup error:", error);
+    }
+  };
+
+  //   useEffect(() => {
+  //     try {
+  //       const memoRef = collection(database, "message");
+
+  //       const unsubscribe = onSnapshot(memoRef, (snapshot) => {
+  //         const data = snapshot.docs.map((doc) => doc.data());
+  //         setMemoData(data);
+  //         console.log("Fetched data:", data);
+  //       });
+
+  //       return () => unsubscribe();
+  //     } catch (error) {
+  //       console.error("Setup error:", error);
+  //     }
+  //   }, [database]);
 
   const idArray = searchParams.getAll("id").map(Number); // id 파라미터의 모든 값을 배열로 가져옵니다
 
@@ -94,7 +132,18 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
             <textarea
               className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg p-2 resize-none  text-gray-600 text-opacity-80 text-[12px]"
               placeholder="호영을 위한 메세지를 작성해주세요"
+              onChange={(e) => {
+                console.log(e.target.value);
+                const memoId = MEMO_LIST.find(
+                  (item) => item.id === result?.id
+                )?.id;
+
+                if (memoId !== undefined) {
+                  setMessage({ id: memoId, messages: e.target.value });
+                }
+              }}
             />
+            <button onClick={postMemo}>저장</button>s
           </foreignObject>
         </svg>
       </div>

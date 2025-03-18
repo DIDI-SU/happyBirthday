@@ -6,6 +6,7 @@ import Loading from "../page/selectIcon/loading";
 import Memo from "../page/memo/index";
 // import Write from "../page/write/Write";
 import MainLayout from "../layout/MainLayout";
+import Achive from "../page/achive";
 
 const routerItems = [
   {
@@ -31,6 +32,10 @@ const routerItems = [
       {
         path: "loading",
         element: <Loading />,
+      },
+      {
+        path: "achive",
+        element: <Achive />,
       },
       {
         path: "*",
