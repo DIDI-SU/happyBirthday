@@ -51,11 +51,11 @@ const Achive = () => {
     <section className="flex flex-row flex-wrap items-center justify-center w-full h-full">
       <div className="text-white flex flex-row flex-wrap items-center justify-center w-full h-full">
         {data?.map((item) => (
-          <div key={item.createdAt} className="relative">
+          <div key={item.createdAt} className="relative w-[300px] h-[300px]">
             {MEMO_LIST[item.memoId].svg}
-            <p className="absolute bottom-[30%] right-[50%] text-black text-md">
-              {item.memoText}
-            </p>
+            <div className="absolute bottom-[50%]  flex-warp right-[30%] text-black text-md  max-w-[200px] ">
+              <p>{item.memoText}</p>
+            </div>
           </div>
         ))}
       </div>
