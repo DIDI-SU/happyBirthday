@@ -138,7 +138,7 @@ const Memo = () => {
           </div>
         </Link>
         <Link
-          to="/"
+          to="/achive"
           className="flex flex-col items-center justify-center ml-8 "
         >
           <Archive width={32} height={32} />
