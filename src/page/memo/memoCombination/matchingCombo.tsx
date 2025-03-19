@@ -95,8 +95,8 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
   //
 
   return (
-    <section className="flex flex-col items-center justify-center w-full px-[16px] absolute">
-      <div className="flex flex-col items-center justify-center ">
+    <section className="flex flex-col items-center justify-center w-full px-[16px] ">
+      <div className="flex flex-col items-center justify-center mb-3 ">
         <p className=" text-white text-nowrap text-[15px] ">
           {t(`confetti.characters.${findMatchingCombination?.name}.subtitle`)}
         </p>
@@ -104,7 +104,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           {t(`confetti.characters.${findMatchingCombination?.name}.title`)}
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center max-h-[50dvh] w-full mx-auto ">
+      <div className="flex flex-col items-center justify-center max-h-[40dvh] w-full mx-auto ">
         <svg viewBox="0 0 200 200">
           {
             MEMO_LIST.find((item) => item.id === findMatchingCombination?.id)
@@ -114,13 +114,15 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
             x="70%"
             y="72%"
             width={170}
-            height={160}
+            height={170}
             transform="translate(-125,-125)"
             className="p-6 "
           >
             <textarea
-              className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px]"
-              placeholder="호영을 위한 메세지를 작성해주세요"
+              className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px] placeholder:text-[12px] placeholder:text-opacity-80"
+              placeholder={t("memo.placeholder")}
+              minLength={1}
+              maxLength={100}
               onChange={(e) => {
                 const memoId = MEMO_LIST.find(
                   (item) => item.id === findMatchingCombination?.id
@@ -148,7 +150,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           </foreignObject>
         </svg>
       </div>
-      <div className="flex flex-col items-center justify-center w-full  pt-3 ">
+      <div className="flex flex-col items-center justify-center w-full  pt-5 ">
         <p className=" text-white  text-nowrap text-[18px] leading-6 ">
           {t(
             `confetti.characters.${findMatchingCombination?.name}.description1`
