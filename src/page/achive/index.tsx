@@ -14,7 +14,6 @@ import { MemoItem } from "../selectIcon/type/selectIcon";
 import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import Loading from "../selectIcon/loading";
 
 const MEMO_LIST: MemoItem[] = [

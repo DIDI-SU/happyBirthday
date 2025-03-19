@@ -26,11 +26,11 @@ const MEMO_LIST: MemoItem[] = [
 ];
 
 interface LoadingProps {
-  mode: "memo" | "achive";
+  mode?: "memo" | "achive";
 }
-const Loading = ({ mode }: LoadingProps) => {
+const Loading = ({ mode = "memo" }: LoadingProps) => {
   const { currentMemoId } = useMemoStore();
-  console.log(currentMemoId);
+
   const memos = useMemo(() => {
     if (!currentMemoId) return [];
     const findMemo = currentMemoId.map((id) => MEMO_LIST[id]);
