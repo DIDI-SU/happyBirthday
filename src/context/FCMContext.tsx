@@ -10,14 +10,14 @@ export { FCMContext };
 
 const FCMProvider = ({ children }: { children: React.ReactNode }) => {
   const firebaseConfig = {
-    apiKey: "AIzaSyB22pxAt6j0maE6dHxDrOLCX9xGl8ZaG0Q",
-    authDomain: "happybirthday-ff131.firebaseapp.com",
-    projectId: "happybirthday-ff131",
-    storageBucket: "happybirthday-ff131.firebasestorage.app",
-    messagingSenderId: "872902582638",
-    appId: "1:872902582638:web:ec7cf83d59c5f3bd08617f",
-    measurementId: "G-S3MX5LHML6",
-    databaseURL: "https://happybirthday.firebaseio.com",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+    databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
   };
 
   const app = initializeApp(firebaseConfig);

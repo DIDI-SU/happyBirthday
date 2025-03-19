@@ -133,7 +133,6 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
               className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg p-2 resize-none  text-gray-600 text-opacity-80 text-[12px]"
               placeholder="호영을 위한 메세지를 작성해주세요"
               onChange={(e) => {
-                console.log(e.target.value);
                 const memoId = MEMO_LIST.find(
                   (item) => item.id === result?.id
                 )?.id;

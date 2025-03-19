@@ -25,6 +25,16 @@ import Primrose from "@/assets/icons/promise.svg?react";
 import Gift from "@/assets/icons/gift.svg?react";
 import Home from "@/assets/icons/home.svg?react";
 import Archive from "@/assets/icons/eye.svg?react";
+import WideLogo from "@/assets/icons/wide_logo.svg?react";
+import AppleWStar from "@/assets/achiveIcon/appleWstar.svg?react";
+import BookWStar from "@/assets/achiveIcon/bookWstar.svg?react";
+import CloverWStar from "@/assets/achiveIcon/cloverWstar.svg?react";
+import CottonWStar from "@/assets/achiveIcon/cottonWstar.svg?react";
+import HeartWStar from "@/assets/achiveIcon/heartWstar.svg?react";
+import FlowerWStar from "@/assets/achiveIcon/flowerWstar.svg?react";
+import DogWStar from "@/assets/achiveIcon/dogWstar.svg?react";
+import GiftWStar from "@/assets/achiveIcon/giftWstar.svg?react";
+import BunnyWStar from "@/assets/achiveIcon/bunnyWstar.svg?react";
 
 export {
   Puppy,
@@ -54,4 +64,14 @@ export {
   Gift,
   Home,
   Archive,
+  WideLogo,
+  AppleWStar,
+  BookWStar,
+  CloverWStar,
+  CottonWStar,
+  HeartWStar,
+  FlowerWStar,
+  DogWStar,
+  GiftWStar,
+  BunnyWStar,
 };
