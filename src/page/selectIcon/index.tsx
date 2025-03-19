@@ -6,9 +6,14 @@ import { useMemoStore } from "../../store/useStore";
 
 const SelectIcon = () => {
   const { t } = useTranslation();
+
   const navigate = useNavigate();
   // const [searchParams] = useSearchParams();
-  const { currentMemoId, setCurrentMemoId } = useMemoStore();
+  const { currentMemoId, setCurrentMemoId, setMode } = useMemoStore();
+
+  useEffect(() => {
+    setMode("memo");
+  }, []);
 
   const goToWrite = useCallback(() => {
     if (currentMemoId?.length === 2) {

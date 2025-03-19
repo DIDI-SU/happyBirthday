@@ -1,7 +1,16 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useMemoStore } from "../../store/useStore";
 import { MemoItem } from "./type/selectIcon";
 import {
+  Strewberry,
+  Chacolate,
+  Curry,
+  Mike,
+  Lemon,
+  Dance,
+  Smile,
+  Spoon,
+  Sun,
   Clover,
   Puppy,
   Heart,
@@ -14,6 +23,18 @@ import {
 } from "./icon/MemoIcon";
 
 const MEMO_LIST: MemoItem[] = [
+  { id: 0, svg: <Strewberry /> },
+  { id: 1, svg: <Chacolate /> },
+  { id: 2, svg: <Curry /> },
+  { id: 3, svg: <Mike /> },
+  { id: 4, svg: <Lemon /> },
+  { id: 5, svg: <Dance /> },
+  { id: 6, svg: <Smile /> },
+  { id: 7, svg: <Spoon /> },
+  { id: 8, svg: <Sun /> },
+];
+
+const ACHIVE_MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={150} height={150} /> },
   { id: 1, svg: <Puppy width={150} height={150} /> },
   { id: 2, svg: <Heart width={150} height={150} /> },
@@ -25,15 +46,20 @@ const MEMO_LIST: MemoItem[] = [
   { id: 8, svg: <Apple width={150} height={150} /> },
 ];
 
-interface LoadingProps {
-  mode?: "memo" | "achive";
-}
-const Loading = ({ mode = "memo" }: LoadingProps) => {
-  const { currentMemoId } = useMemoStore();
+const Loading = () => {
+  const { currentMemoId, setMode } = useMemoStore();
+  const { mode } = useMemoStore();
+
+  useEffect(() => {
+    setMode("achive");
+  }, []);
 
   const memos = useMemo(() => {
     if (!currentMemoId) return [];
-    const findMemo = currentMemoId.map((id) => MEMO_LIST[id]);
+
+    const findMemo = currentMemoId.map((id) =>
+      mode === "achive" ? ACHIVE_MEMO_LIST[id] : MEMO_LIST[id]
+    );
 
     const increaseMemoItems = findMemo.map((item) => {
       return { ...item, svg: item.svg };
@@ -42,7 +68,7 @@ const Loading = ({ mode = "memo" }: LoadingProps) => {
       return { ...item, svg: item.svg };
     });
     return [...findMemo, ...increaseMemoItems, ...increaseMemoItems2];
-  }, [currentMemoId]);
+  }, [currentMemoId, mode]);
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center overflow-hidden">

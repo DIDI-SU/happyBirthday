@@ -137,9 +137,11 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
                 }
               }}
             />
-            <div className="flex flex-row items-center justify-end w-full absolute bottom-3 right-4 ">
+            <div
+              className="flex flex-row items-center justify-end w-full absolute bottom-3 right-4 "
+              onClick={postMemo}
+            >
               <button
-                onClick={postMemo}
                 className={`text-sm w-[30%] -rotate-6 cursor-pointer  ${
                   isSaving ? "bg-gray-500" : "bg-blue-500"
                 } rounded-md`}

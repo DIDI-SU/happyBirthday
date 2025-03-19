@@ -4,6 +4,7 @@ import Loading from "../selectIcon/loading";
 import MatchingCombo from "./memoCombination/matchingCombo";
 import { Archive, Home } from "../selectIcon/icon/MemoIcon";
 import { Link } from "react-router-dom";
+import { useMemoStore } from "../../store/useStore";
 
 interface MemoCombination {
   id: number;
@@ -114,14 +115,16 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
 ];
 //로딩 2초정도 딜레이 후 메모 페이지 렌더링
 const Memo = () => {
+  const { setMode } = useMemoStore();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setMode("memo");
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
   if (isLoading) {
-    return <Loading mode="memo" />;
+    return <Loading />;
   }
   return (
     <section className="flex flex-col items-center justify-center w-full h-full ">

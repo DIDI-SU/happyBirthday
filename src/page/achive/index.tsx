@@ -15,6 +15,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
 import Loading from "../selectIcon/loading";
+import { useMemoStore } from "../../store/useStore";
 
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <CloverWStar width={250} height={250} /> },
@@ -35,6 +36,7 @@ interface AchiveItem {
 
 const Achive = () => {
   const { database } = useContext(FCMContext);
+  const { setMode } = useMemoStore();
   const [data, setData] = useState<AchiveItem[]>([]);
   const getData = async () => {
     if (!database) return;
@@ -51,12 +53,13 @@ const Achive = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setMode("achive");
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
   if (isLoading) {
-    return <Loading mode="achive" />;
+    return <Loading />;
   }
   return (
     <>
