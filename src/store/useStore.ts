@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { Store } from "./type/stores";
-import { useSearchParams } from "react-router-dom";
+
 export const useMemoStore = create<Store>((set) => ({
   currentMemoId: null,
   mode: "",
@@ -27,7 +27,7 @@ export const useMemoStore = create<Store>((set) => ({
         }
         return { currentMemoId: [...state.currentMemoId, newCurrentMemoId] };
       } else {
-        return { currentMemoId: [newCurrentMemoId] };
+        return { currentMemoId: newCurrentMemoId ? [newCurrentMemoId] : null };
       }
     }),
   setMode: (newMode: "memo" | "achive" | "") => set({ mode: newMode }),
