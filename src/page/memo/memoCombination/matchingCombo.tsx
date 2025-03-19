@@ -17,6 +17,7 @@ import { useContext, useMemo, useState } from "react";
 import { FCMContext } from "../../../context/FCMContext";
 import { setDoc, doc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import { useMemoStore } from "../../../store/useStore";
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={200} height={200} /> },
   { id: 1, svg: <Puppy width={200} height={200} /> },
@@ -41,6 +42,7 @@ interface MatchingComboProps {
 }
 
 const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
+  const { setCurrentMemoId, setMode } = useMemoStore();
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const { database } = useContext(FCMContext);
@@ -59,6 +61,8 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
       });
       setMessage({ id: 0, messages: "" });
       setIsSaving(true);
+      setMode("achive");
+      setCurrentMemoId(message.id);
       navigate("/achive");
     } catch (error) {
       console.error("Setup error:", error);

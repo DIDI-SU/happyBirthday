@@ -14,6 +14,8 @@ import { MemoItem } from "../selectIcon/type/selectIcon";
 import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import Loading from "../selectIcon/loading";
 
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <CloverWStar width={250} height={250} /> },
@@ -21,8 +23,8 @@ const MEMO_LIST: MemoItem[] = [
   { id: 2, svg: <HeartWStar width={250} height={250} /> },
   { id: 3, svg: <FlowerWStar width={250} height={250} /> },
   { id: 4, svg: <BookWStar width={250} height={250} /> },
-  { id: 5, svg: <BunnyWStar width={250} height={250} /> },
-  { id: 6, svg: <GiftWStar width={250} height={250} /> },
+  { id: 5, svg: <GiftWStar width={250} height={250} /> },
+  { id: 6, svg: <BunnyWStar width={250} height={250} /> },
   { id: 7, svg: <CottonWStar width={250} height={250} /> },
   { id: 8, svg: <AppleWStar width={250} height={250} /> },
 ];
@@ -48,6 +50,15 @@ const Achive = () => {
     getData();
   }, []);
 
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+  if (isLoading) {
+    return <Loading mode="achive" />;
+  }
   return (
     <>
       <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0 ">

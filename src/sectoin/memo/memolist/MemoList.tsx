@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import {
   Chacolate,
   Curry,
@@ -11,6 +11,7 @@ import {
   Sun,
 } from "../../../page/selectIcon/icon/MemoIcon";
 import { MemoItem } from "../../../page/selectIcon/type/selectIcon";
+import { useMemoStore } from "../../../store/useStore";
 
 interface MemoListProps {
   currentMemoId: number[] | null;
@@ -70,8 +71,10 @@ const SelectMemoList = React.memo(
 );
 
 const MemoList = ({ setCurrentMemoId, currentMemoId }: MemoListProps) => {
+  const { setMode } = useMemoStore();
   const handleClick = useCallback((id: number) => {
     setCurrentMemoId(id);
+    setMode("memo");
   }, []);
 
   return (

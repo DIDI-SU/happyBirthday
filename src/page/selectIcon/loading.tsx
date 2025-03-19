@@ -2,31 +2,35 @@ import { useMemo } from "react";
 import { useMemoStore } from "../../store/useStore";
 import { MemoItem } from "./type/selectIcon";
 import {
-  Strewberry,
-  Chacolate,
-  Curry,
-  Mike,
-  Lemon,
-  Dance,
-  Smile,
-  Spoon,
-  Sun,
+  Clover,
+  Puppy,
+  Heart,
+  Primrose,
+  Book,
+  Gift,
+  Bunny,
+  Cotton,
+  Apple,
 } from "./icon/MemoIcon";
 
 const MEMO_LIST: MemoItem[] = [
-  { id: 0, svg: <Strewberry /> },
-  { id: 1, svg: <Chacolate /> },
-  { id: 2, svg: <Curry /> },
-  { id: 3, svg: <Mike /> },
-  { id: 4, svg: <Lemon /> },
-  { id: 5, svg: <Dance /> },
-  { id: 6, svg: <Smile /> },
-  { id: 7, svg: <Spoon /> },
-  { id: 8, svg: <Sun /> },
+  { id: 0, svg: <Clover width={150} height={150} /> },
+  { id: 1, svg: <Puppy width={150} height={150} /> },
+  { id: 2, svg: <Heart width={150} height={150} /> },
+  { id: 3, svg: <Primrose width={150} height={150} /> },
+  { id: 4, svg: <Book width={150} height={150} /> },
+  { id: 5, svg: <Gift width={150} height={150} /> },
+  { id: 6, svg: <Bunny width={150} height={150} /> },
+  { id: 7, svg: <Cotton width={150} height={150} /> },
+  { id: 8, svg: <Apple width={150} height={150} /> },
 ];
 
-const Loading = () => {
+interface LoadingProps {
+  mode: "memo" | "achive";
+}
+const Loading = ({ mode }: LoadingProps) => {
   const { currentMemoId } = useMemoStore();
+  console.log(currentMemoId);
   const memos = useMemo(() => {
     if (!currentMemoId) return [];
     const findMemo = currentMemoId.map((id) => MEMO_LIST[id]);
@@ -54,7 +58,9 @@ const Loading = () => {
       </div>
       <div>
         <p className="text-white text-2xl font-bold mb-11">
-          나만의 컨페티 만드는 중...
+          {mode === "memo"
+            ? "나만의 컨페티 만드는 중..."
+            : "컨페티 보내는중..."}
         </p>
       </div>
     </div>

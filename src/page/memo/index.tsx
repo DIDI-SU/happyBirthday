@@ -118,17 +118,13 @@ const Memo = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 3000);
   }, []);
   if (isLoading) {
-    return <Loading />;
+    return <Loading mode="memo" />;
   }
   return (
     <section className="flex flex-col items-center justify-center w-full h-full ">
-      {/* <div className="text-sm text-white text-opacity-70 absolute top-5 flex flex-col items-center justify-center">
-        <p>해당 메세지는 따로 아카이빙되어 전달 될 예정입니다.</p>
-        <p>따뜻한 말을 전달해주세요</p>
-      </div> */}
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
       <div className="flex  items-center justify-center w-full mx-auto absolute bottom-1 ">
         <Link
