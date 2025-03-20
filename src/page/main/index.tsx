@@ -1,5 +1,5 @@
 import BackGroundIcons from "./component/background/BackGroundIcons";
-import MainFace from "./mainface/MainFace";
+// import MainFace from "./mainface/MainFace";
 import MainLogo from "./mainlogo/MainLogo";
 
 const Main = () => {
