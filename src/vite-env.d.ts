@@ -4,6 +4,12 @@ declare module "*.png" {
   export default value;
 }
 
+declare module "*.svg" {
+  import * as React from "react";
+  const SVG: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
+}
+
 interface ImportMetaEnv {
   VITE_FIREBASE_API_KEY: string;
   VITE_FIREBASE_AUTH_DOMAIN: string;

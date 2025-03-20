@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Loading from "../selectIcon/loading";
 
-import MatchingCombo from "./memoCombination/matchingCombo";
-import { Archive, Home } from "../selectIcon/icon/MemoIcon";
+import MatchingCombo from "./memoCombination/MatchingCombo";
+import { Archive, Home } from "../common/icon/MemoIcon";
 import { Link } from "react-router-dom";
 import { useMemoStore } from "../../store/useStore";
 
@@ -128,6 +128,17 @@ const Memo = () => {
   }
   return (
     <section className="flex flex-col items-center justify-center w-full h-full ">
+      <div className="top-[1.5%] right-[5%] fixed">
+        <div className="flex flex-col items-center justify-center bg-[#fffef0] rounded-lg p-4 relative blur-xs">
+          <p className="text-gray-500 text-sm font-bold mb-1">
+            해당 메모는 호영에게 전달 될 예정입니다.
+          </p>
+          <p className="text-gray-500 text-sm font-bold">
+            따뜻한 말들로 메모장을 채워주세요🐶
+          </p>
+          <div className="absolute -right-1  top-1 w-4 h-4 bg-white rotate-45"></div>
+        </div>
+      </div>
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
       <div className="flex  items-center justify-center w-full mx-auto absolute bottom-1 ">
         <Link
@@ -140,6 +151,7 @@ const Memo = () => {
             <p className=" text-sm text-white">돌아가기</p>
           </div>
         </Link>
+
         <Link
           to="/achive"
           className="flex flex-col items-center justify-center ml-8 "

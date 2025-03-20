@@ -9,12 +9,13 @@ import {
   GiftWStar,
   BunnyWStar,
   WideLogo,
-} from "../selectIcon/icon/MemoIcon";
+} from "../common/icon/MemoIcon";
+
 import { MemoItem } from "../selectIcon/type/selectIcon";
 import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
-import Loading from "../selectIcon/loading";
+import AchiveLoading from "./achiveLoading";
 import { useMemoStore } from "../../store/useStore";
 
 const MEMO_LIST: MemoItem[] = [
@@ -59,7 +60,7 @@ const Achive = () => {
     }, 3000);
   }, []);
   if (isLoading) {
-    return <Loading />;
+    return <AchiveLoading />;
   }
   return (
     <>

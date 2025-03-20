@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from "react";
-import MemoList from "../../sectoin/memo/memolist/MemoList";
+import MemoList from "../memo/list/MemoList";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useMemoStore } from "../../store/useStore";

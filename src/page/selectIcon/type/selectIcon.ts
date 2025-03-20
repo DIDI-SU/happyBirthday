@@ -8,7 +8,7 @@ import {
   Spoon,
   Strewberry,
   Sun,
-} from "../icon/MemoIcon";
+} from "../../common/icon/MemoIcon";
 
 export const memoMap = {
   0: Strewberry,

@@ -1,7 +1,6 @@
 import BgImage from "@/assets/image/paperGroups.svg?react";
-import First from "@/assets/image/main_face.png";
-
-import MainFace from "@/assets/image/mainFace.svg?react";
+import First from "@/assets/image/secondFace.png";
+import MainFace from "@/assets/image/firstFace.png";
 
 import DraggableSVGElement from "../component/draggables/DraggableSVGElement";
 import { useEffect, useRef, useState } from "react";
@@ -16,7 +15,7 @@ import {
   Clover,
   Book,
   OrangeStar,
-} from "../../selectIcon/icon/MemoIcon";
+} from "../../common/icon/MemoIcon";
 
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +40,10 @@ const MainLogo = () => {
       onClick={() => handlePicChange()}
     >
       <DraggableSVGElement>
-        <MainFace className="w-[70%] sm:w-[70%] md:w-[70%] lg:w-[70%] xl:w-[70%] " />
+        <image
+          href={MainFace}
+          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%]"
+        />
       </DraggableSVGElement>
     </g>,
   ]);

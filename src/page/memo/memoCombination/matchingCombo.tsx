@@ -9,7 +9,7 @@ import {
   Bunny,
   Cotton,
   Apple,
-} from "../../selectIcon/icon/MemoIcon";
+} from "../../common/icon/MemoIcon";
 import { MemoItem } from "../../selectIcon/type/selectIcon";
 import { useTranslation } from "react-i18next";
 

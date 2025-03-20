@@ -1,7 +1,7 @@
 import React from "react";
 import { BackgroundIcons } from "../../types/main";
 
-import { Apple, Heart, Bunny, Cotton } from "../../../selectIcon/icon/MemoIcon";
+import { Apple, Heart, Bunny, Cotton } from "../../../common/icon/MemoIcon";
 
 const IconItem = React.memo(
   ({
