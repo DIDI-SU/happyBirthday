@@ -64,14 +64,22 @@ const Achive = () => {
   }
   return (
     <>
-      <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0 ">
+      <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0">
         <WideLogo className="min-w-[200px]" />
       </section>
-      <section className="flex flex-row flex-wrap items-center justify-center w-full absolute top-[13%]  p-6">
+      <section
+        className={`flex flex-row flex-wrap items-center ${
+          data.length === 1
+            ? "justify-start sm:justify-center"
+            : "justify-center"
+        } w-full absolute top-[13%] p-6`}
+      >
         {data?.map((item) => (
           <div
             key={item.createdAt}
-            className="relative h-[250px] flex items-center justify-center min-w-[200px] min-h-[200px] mx-3 my-3"
+            className={`relative h-[250px] flex items-center justify-center min-w-[200px] min-h-[200px] ${
+              data.length === 1 ? "mr-5" : "mx-3 my-3"
+            }`}
           >
             {MEMO_LIST[item.memoId].svg}
             <div className="absolute inset-0 flex items-center justify-center">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../selectIcon/loading";
 
-import MatchingCombo from "./memoCombination/MatchingCombo";
+import MatchingCombo from "./memoCombination/matchingCombo";
 import { Archive, Home } from "../common/icon/MemoIcon";
 import { Link } from "react-router-dom";
 import { useMemoStore } from "../../store/useStore";
