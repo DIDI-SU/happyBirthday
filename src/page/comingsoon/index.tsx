@@ -41,10 +41,10 @@ const ComingSoon = () => {
         />
       </div>
       <div className="flex flex-row items-center justify-center text-white text-xl">
-        <p className="mr-2">{days}Days</p>
-        <p className="mr-2">{hours}Hours</p>
-        <p className="mr-2">{minutes}Minutes</p>
-        <p className="mr-2">{seconds}Seconds</p>
+        <p className="mr-2">{days} Days</p>
+        <p className="mr-2">{hours} Hours</p>
+        <p className="mr-2">{minutes} Minutes</p>
+        <p className="mr-2">{seconds} Seconds</p>
       </div>
     </div>
   );
