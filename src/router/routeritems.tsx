@@ -1,13 +1,13 @@
 import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
-import Main from "../page/main/index";
+// import Main from "../page/main/index";
 import Memo from "../page/memo/Memo";
 import Write from "../page/write/Write";
 
 const routerItems = [
   {
     path: "/",
-    element: <Main />,
+    element: <ComingSoon />,
   },
   {
     path: "/memo",

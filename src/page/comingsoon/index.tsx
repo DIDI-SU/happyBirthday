@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { ComingSoonImage } from "../memo/icon/MemoIcon";
-import { useTranslation } from "react-i18next";
+import Packege from "../../assets/image/package.png";
+// import { useTranslation } from "react-i18next";
 import useSound from "use-sound";
+import useCountdown from "./hooks/useCountdown";
 const ComingSoon = () => {
-  const { t } = useTranslation();
+  const { days, hours, minutes, seconds } = useCountdown("2025-03-22 15:26:00");
+  // const { t } = useTranslation();
   const [isAnimating, setIsAnimating] = useState(false);
   const [play] = useSound("/sounds/coming.mp3", {
     sprite: {
@@ -30,19 +32,19 @@ const ComingSoon = () => {
         }`}
         onClick={handlePlay}
       >
-        <ComingSoonImage
+        <img
+          src={Packege}
+          alt="Packege"
           width="100%"
           height="auto"
           className="w-[300px] md:w-[500px] lg:w-[665px] mx-auto"
         />
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-white  text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
-          {t("comingsoon.date")}
-        </h1>
-        <h2 className="text-white  text-base sm:text-xl md:text-2xl lg:text-2xl font-normal font-abordage">
-          {t("comingsoon.title")}
-        </h2>
+      <div className="flex flex-row items-center justify-center text-white text-xl">
+        <p className="mr-2">{days}</p>Days
+        <p className="mr-2">{hours}</p>Hours
+        <p className="mr-2">{minutes}</p>Minutes
+        <p className="mr-2">{seconds}</p>Seconds
       </div>
     </div>
   );
