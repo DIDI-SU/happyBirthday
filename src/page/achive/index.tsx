@@ -67,15 +67,15 @@ const Achive = () => {
       <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0 ">
         <WideLogo className="min-w-[200px]" />
       </section>
-      <section className="flex flex-row flex-wrap items-center justify-start w-full absolute top-[13%]  p-6">
+      <section className="flex flex-row flex-wrap items-center justify-center w-full absolute top-[13%]  p-6">
         {data?.map((item) => (
           <div
             key={item.createdAt}
-            className="relative  h-[250px] flex items-center justify-center min-w-[200px] min-h-[200px] mr-5 flex-1"
+            className="relative h-[250px] flex items-center justify-center min-w-[200px] min-h-[200px] mx-3 my-3"
           >
             {MEMO_LIST[item.memoId].svg}
-            <div className="w-full flex-wrap flex items-center justify-center absolute max-w-[200px] min-w-[200px] h-[160px] p-6">
-              <p className="flex-wrap text-gray-600 text-center text-md font-bold break-words whitespace-pre-wrap w-full overflow-wrap-anywhere">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-gray-600 text-center text-md font-bold break-words whitespace-pre-wrap max-w-[180px] overflow-wrap-anywhere">
                 {item.memoText}
               </p>
             </div>
