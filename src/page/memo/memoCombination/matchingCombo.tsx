@@ -150,7 +150,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           transform={`translate(${findMatchingCombination?.memoTranslateX},${findMatchingCombination?.memoTranslateY})`}
           className="p-1 "
         >
-          <div className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px] placeholder:text-[12px] placeholder:text-opacity-80">
+          <div className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px] placeholder:text-[12px] placeholder:text-opacity-80  flex flex-col justify-between">
             <textarea
               className={`w-full h-[120px] border-none bg-transparent`}
               placeholder={t("memo.placeholder")}
@@ -185,8 +185,6 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
 
     return iconComopnent;
   }, [findMatchingCombination, message]);
-
-  console.log("message", message);
 
   useEffect(() => {
     if (findMatchingCombination) {
