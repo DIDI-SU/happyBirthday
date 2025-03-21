@@ -202,7 +202,7 @@ const Memo = () => {
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
       <div className="flex  items-center justify-center w-full mx-auto absolute bottom-5 ">
         <Link
-          to="/"
+          to="/main"
           className="flex flex-col items-center justify-center mr-4 "
         >
           <Home width={32} height={32} className="mb-1" />

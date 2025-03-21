@@ -22,11 +22,13 @@ import {
   Bunny,
   Cotton,
   Apple,
+  Home,
+  Archive,
 } from "../common/icon/MemoIcon";
 import { MemoItem } from "../selectIcon/type/selectIcon";
 import AchiveLoading from "../achive/achiveLoading";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ACHIVE_MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={220} height={220} /> },
@@ -132,8 +134,30 @@ const Drop = () => {
   // 메인 렌더링
   return (
     <>
-      <div className="flex items-center justify-center absolute top-10 w-full">
+      <div className="flex flex-col items-center justify-center absolute top-10 w-full">
         <StraightLogo width={"80%"} />
+        <div className="flex items-center justify-center gap-2 mt-11">
+          <Link
+            to="/main"
+            className="flex flex-col items-center justify-center mr-4 "
+          >
+            <Home width={32} height={32} className="mb-1" />
+            <div className="flex flex-col items-center justify-center">
+              <p className=" text-[12px] text-white">홈으로 </p>
+              <p className="  text-[12px] text-white">돌아가기</p>
+            </div>
+          </Link>
+          <Link
+            to="/achive"
+            className="flex flex-col items-center justify-center ml-8 "
+          >
+            <Archive width={32} height={32} />
+            <div className="flex flex-col items-center justify-center ">
+              <p className="  text-[12px] text-white">아카이빙</p>
+              <p className="  text-[12px] text-white">보러가기</p>
+            </div>
+          </Link>
+        </div>
       </div>
 
       <AnimatePresence>
