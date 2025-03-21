@@ -1,6 +1,6 @@
 import BgImage from "@/assets/image/paperGroups.svg?react";
-import First from "@/assets/image/secondFace.png";
-import MainFace from "@/assets/image/firstFace.png";
+import First from "@/assets/image/back.png";
+import MainFace from "@/assets/image/front.png";
 
 import DraggableSVGElement from "../component/draggables/DraggableSVGElement";
 import { useEffect, useRef, useState } from "react";
@@ -23,26 +23,26 @@ const MainLogo = () => {
   const navigate = useNavigate();
   const currentPicRef = useRef([
     <g
-      key="first"
-      transform="translate(-220 -140)"
-      onClick={() => handlePicChange()}
-    >
-      <DraggableSVGElement>
-        <image
-          href={First}
-          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%] "
-        />
-      </DraggableSVGElement>
-    </g>,
-    <g
       key="second"
       transform="translate(-220 -140)"
       onClick={() => handlePicChange()}
     >
       <DraggableSVGElement>
         <image
-          href={MainFace}
+          href={First}
           className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%]"
+        />
+      </DraggableSVGElement>
+    </g>,
+    <g
+      key="first"
+      transform="translate(-220 -140)"
+      onClick={() => handlePicChange()}
+    >
+      <DraggableSVGElement>
+        <image
+          href={MainFace}
+          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%] "
         />
       </DraggableSVGElement>
     </g>,

@@ -10,6 +10,11 @@ declare module "*.svg" {
   export default SVG;
 }
 
+declare module "*.webp" {
+  const src: string;
+  export default src;
+}
+
 interface ImportMetaEnv {
   VITE_FIREBASE_API_KEY: string;
   VITE_FIREBASE_AUTH_DOMAIN: string;
