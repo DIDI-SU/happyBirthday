@@ -25,7 +25,6 @@ import {
 } from "../common/icon/MemoIcon";
 import { MemoItem } from "../selectIcon/type/selectIcon";
 import AchiveLoading from "../achive/achiveLoading";
-import { useMemoStore } from "../../store/useStore";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -55,17 +54,35 @@ const MEMO_LIST: MemoItem[] = [
 ];
 
 const Drop = () => {
-  const { setMode } = useMemoStore();
   const { database } = useContext(FCMContext);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState<AchiveItem | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
+  });
 
+  // 윈도우 크기에 따른 위치 계산 함수들
+  const getStartX = () => {
+    if (windowSize.width < 640) return -70; // 모바일
+    if (windowSize.width < 1024) return -120; // 태블릿
+    return -380; // 데스크탑
+  };
+
+  const getEndYPercent = () => {
+    if (windowSize.width < 640) return "53dvh"; // 모바일
+    if (windowSize.width < 1024) return "60dvh"; // 태블릿
+    return "50dvh"; // 데스크탑
+  };
+
+  // 데이터 가져오기
   const getData = async () => {
     if (!database) return;
     const targetId = localStorage.getItem("memo");
 
     if (targetId) {
-      //전체를 가져오고 나서 특정 ID의 문서를 가져옵니다
       const docRef = doc(database, "message", JSON.parse(targetId));
       const docSnap = await getDoc(docRef);
 
@@ -75,28 +92,7 @@ const Drop = () => {
     }
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-  const navigate = useNavigate();
-
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setMode("achive");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-  if (isLoading) {
-    return <AchiveLoading />;
-  }
-
-  // 윈도우 크기 감지 (너비와 높이 모두 감지)
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
-  });
-
+  // 윈도우 크기 감지
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -109,21 +105,31 @@ const Drop = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 화면 크기에 따른 시작 위치 계산 (가로 방향)
-  const getStartX = () => {
-    if (windowSize.width < 640) return -70; // 모바일
-    if (windowSize.width < 1024) return -120; // 태블릿
-    return -380; // 데스크탑
-  };
+  // 데이터 로딩
+  useEffect(() => {
+    let loadingTimer: NodeJS.Timeout;
 
-  // 애니메이션 종료 위치 계산 (세로 방향 - 퍼센트로)
-  const getEndYPercent = () => {
-    if (windowSize.width < 640) return "53dvh"; // 모바일에서는 화면 높이의 60%
-    if (windowSize.width < 1024) return "60dvh"; // 태블릿에서는 화면 높이의 65%
-    return "50dvh"; // 데스크탑에서는 화면 높이의 70%
-  };
+    const initializeData = async () => {
+      await getData();
+      loadingTimer = setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+    };
 
-  // 애니메이션 영역
+    initializeData();
+
+    // 클린업 함수
+    return () => {
+      if (loadingTimer) clearTimeout(loadingTimer);
+    };
+  }, [database]);
+
+  // 로딩 중이면 로딩 화면 표시
+  if (isLoading) {
+    return <AchiveLoading />;
+  }
+
+  // 메인 렌더링
   return (
     <>
       <div className="flex items-center justify-center absolute top-10 w-full">
