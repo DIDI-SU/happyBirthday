@@ -150,9 +150,9 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           transform={`translate(${findMatchingCombination?.memoTranslateX},${findMatchingCombination?.memoTranslateY})`}
           className="p-1 "
         >
-          <div className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px] placeholder:text-[12px] placeholder:text-opacity-80  flex flex-col justify-between">
+          <div className=" w-full h-full bg-transparent border-dotted border-2 border-gray-600 rounded-lg px-2 pt-2 resize-none  text-gray-600 text-opacity-80 text-[12px] placeholder:text-[12px] placeholder:text-opacity-80  flex flex-col">
             <textarea
-              className={`w-full h-[120px] border-none bg-transparent`}
+              className={`w-full h-[160px] border-none bg-transparent`}
               placeholder={t("memo.placeholder")}
               minLength={1}
               maxLength={100}
@@ -166,7 +166,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
               }}
             />
             <div
-              className="flex flex-row items-center justify-end w-full absolute bottom-2 right-2"
+              className="flex flex-row items-center justify-end w-full "
               onClick={handleSendClick}
             >
               <button
