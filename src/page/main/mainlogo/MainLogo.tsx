@@ -129,25 +129,74 @@ const MainLogo = () => {
                 </DraggableSVGElement>
               </g>
             </g>
+
+            <g
+              transform="translate(400 800)"
+              onClick={() => navigate("/selectIcon")}
+            >
+              <Link
+                to="/selectIcon"
+                className="flex flex-col items-center justify-center  "
+              >
+                <Pencil width={32} height={32} />
+                <text
+                  x="15"
+                  y="60" // 아이콘 아래에 위치하도록 y값 조정
+                  textAnchor="middle"
+                  fill={"white"}
+                  fontSize={15}
+                  fontFamily="sans-serif"
+                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                >
+                  컨페티
+                </text>
+                <text
+                  x="15"
+                  y="80" // 아이콘 아래에 위치하도록 y값 조정
+                  textAnchor="middle"
+                  fill={"white"}
+                  fontSize={15}
+                  fontFamily="sans-serif"
+                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                >
+                  작성하기
+                </text>
+              </Link>
+            </g>
+            <g
+              transform="translate(550 800)"
+              onClick={() => navigate("/achive")}
+            >
+              <Link
+                to="/achive"
+                className="flex flex-col items-center justify-center "
+              >
+                <Archive width={32} height={32} />
+                <text
+                  x="15"
+                  y="60" // 아이콘 아래에 위치하도록 y값 조정
+                  textAnchor="middle"
+                  fill={"white"}
+                  fontSize={15}
+                  fontFamily="sans-serif"
+                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                >
+                  아카이빙
+                </text>
+                <text
+                  x="15"
+                  y="80" // 아이콘 아래에 위치하도록 y값 조정
+                  textAnchor="middle"
+                  fill={"white"}
+                  fontSize={15}
+                  fontFamily="sans-serif"
+                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                >
+                  보러가기
+                </text>
+              </Link>
+            </g>
           </svg>
-          <div className="flex  items-center justify-center w-full mx-auto absolute bottom-[15%] ">
-            <Link
-              to="/selectIcon"
-              className="flex flex-col items-center justify-center mr-4 "
-            >
-              <Pencil width={32} height={32} />
-              <p className=" text-[12px] text-white">컨페티 </p>
-              <p className="  text-[12px] text-white">작성하기</p>
-            </Link>
-            <Link
-              to="/achive"
-              className="flex flex-col items-center justify-center "
-            >
-              <Archive width={32} height={32} />
-              <p className=" text-[12px] text-white">아카이빙</p>
-              <p className="  text-[12px] text-white">보러가기</p>
-            </Link>
-          </div>
         </div>
       </section>
     </>
