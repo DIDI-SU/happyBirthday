@@ -1,65 +1,37 @@
-import { useState, useCallback } from "react";
+import { ReactNode, useState } from "react";
 
 interface DraggableSVGElementProps {
-  children: React.ReactNode;
-  rotation?: number; // 회전 각도
-  className?: string;
+  children: ReactNode;
+  rotation?: number;
 }
 
 const DraggableSVGElement = ({
   children,
   rotation = 0,
-  className,
 }: DraggableSVGElementProps) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const [isShaking, setIsShaking] = useState(false);
 
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      setIsDragging(true);
-      setStartPos({
-        x: e.clientX - position.x,
-        y: e.clientY - position.y,
-      });
-    },
-    [position]
-  );
+  const handleElementClick = () => {
+    // 이미 흔들리고 있지 않을 때만 애니메이션 시작
+    if (!isShaking) {
+      setIsShaking(true);
+      setTimeout(() => setIsShaking(false), 900); // 0.9초 애니메이션 시간
+    }
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isDragging) return;
+    // 이벤트 전파 방지 (선택사항)
+    // e.stopPropagation();
+  };
 
-      setPosition({
-        x: e.clientX - startPos.x,
-        y: e.clientY - startPos.y,
-      });
-    },
-    [isDragging, startPos]
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-    // 원래 위치로 돌아가는 애니메이션
-    setPosition({ x: 0, y: 0 });
-  }, []);
-
-  const transform = `translate(${position.x} ${position.y}) rotate(${rotation})`;
-
+  // onClick 핸들러를 g 요소에 직접 적용
   return (
     <g
-      className={className}
-      transform={transform}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      transform={`rotate(${rotation})`}
+      className={isShaking ? "jello-vertical" : ""}
       style={{
-        cursor: isDragging ? "grabbing" : "grab",
-        transition: isDragging
-          ? "none"
-          : "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)",
+        transformOrigin: "center center",
+        transformBox: "fill-box",
       }}
+      onClick={handleElementClick}
     >
       {children}
     </g>

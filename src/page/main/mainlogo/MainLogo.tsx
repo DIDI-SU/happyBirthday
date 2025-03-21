@@ -15,9 +15,11 @@ import {
   Clover,
   Book,
   OrangeStar,
+  Pencil,
+  Archive,
 } from "../../common/icon/MemoIcon";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MainLogo = () => {
   const navigate = useNavigate();
@@ -27,24 +29,20 @@ const MainLogo = () => {
       transform="translate(-220 -140)"
       onClick={() => handlePicChange()}
     >
-      <DraggableSVGElement>
-        <image
-          href={First}
-          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%]"
-        />
-      </DraggableSVGElement>
+      <image
+        href={First}
+        className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%]"
+      />
     </g>,
     <g
       key="first"
       transform="translate(-220 -140)"
       onClick={() => handlePicChange()}
     >
-      <DraggableSVGElement>
-        <image
-          href={MainFace}
-          className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%] "
-        />
-      </DraggableSVGElement>
+      <image
+        href={MainFace}
+        className="w-[63%] sm:w-[63%] md:w-[63%] lg:w-[63%] xl:w-[63%] "
+      />
     </g>,
   ]);
 
@@ -66,7 +64,7 @@ const MainLogo = () => {
   return (
     <>
       <section className="relative flex items-center justify-center w-full px-4 sm:px-6 md:px-8">
-        <div className="relative w-full flex justify-center">
+        <div className="relative w-full flex justify-center flex-col items-center">
           <svg
             viewBox="0 0 1000 1000"
             className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[1200px] xl:w-[1200px] max-w-[1200px] "
@@ -80,9 +78,9 @@ const MainLogo = () => {
               {/* 얼굴 이미지 */}
               {currentPicRef.current}
 
-              <g transform="translate(-50 260)" className="z-[130]">
+              <g transform="translate(-50 260)" className="z-[200] ">
                 <DraggableSVGElement rotation={-10.5}>
-                  <Book width={128} height={156} className=" opacity-[1]" />
+                  <Book width={110} height={110} className=" opacity-[1]" />
                 </DraggableSVGElement>
               </g>
               <g transform="translate(300 -200)">
@@ -118,9 +116,11 @@ const MainLogo = () => {
                   <Puppy width={110} height={110} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(-320 -100)" className="z-[140]">
+              <g transform="translate(-320 -100)">
                 <DraggableSVGElement>
-                  <Ticket width={371} height={481} />
+                  <Link to="https://youtu.be/FBqN2VfcoV4?feature=shared">
+                    <Ticket width={371} height={481} />
+                  </Link>
                 </DraggableSVGElement>
               </g>
               <g transform="translate(-260 110)">
@@ -130,6 +130,24 @@ const MainLogo = () => {
               </g>
             </g>
           </svg>
+          <div className="flex  items-center justify-center w-full mx-auto absolute bottom-[15%] ">
+            <Link
+              to="/selectIcon"
+              className="flex flex-col items-center justify-center mr-4 "
+            >
+              <Pencil width={32} height={32} />
+              <p className=" text-[12px] text-white">컨페티 </p>
+              <p className="  text-[12px] text-white">작성하기</p>
+            </Link>
+            <Link
+              to="/achive"
+              className="flex flex-col items-center justify-center "
+            >
+              <Archive width={32} height={32} />
+              <p className=" text-[12px] text-white">아카이빙</p>
+              <p className="  text-[12px] text-white">보러가기</p>
+            </Link>
+          </div>
         </div>
       </section>
     </>
