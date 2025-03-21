@@ -17,6 +17,7 @@ import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
 import AchiveLoading from "./achiveLoading";
 import { useMemoStore } from "../../store/useStore";
+import { AchiveItem } from "../common/types/type";
 
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <CloverWStar width={250} height={250} /> },
@@ -29,11 +30,6 @@ const MEMO_LIST: MemoItem[] = [
   { id: 7, svg: <CottonWStar width={250} height={250} /> },
   { id: 8, svg: <AppleWStar width={250} height={250} /> },
 ];
-interface AchiveItem {
-  createdAt: string;
-  memoId: number;
-  memoText: string;
-}
 
 const Achive = () => {
   const { database } = useContext(FCMContext);

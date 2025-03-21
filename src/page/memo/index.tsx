@@ -10,6 +10,12 @@ interface MemoCombination {
   id: number;
   name: string;
   korName: string;
+  translateX: string;
+  translateY: string;
+  memoSize: { width: number; height: number };
+  memoTranslateX: string;
+  memoTranslateY: string;
+  scale: number;
   pairs: { item1: number; item2: number }[];
 }
 
@@ -18,6 +24,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 0,
     name: "clover",
     korName: "클로버",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-110",
+    scale: 1,
     pairs: [
       { item1: 0, item2: 1 }, // Strawberry + Chocolate
       { item1: 1, item2: 4 },
@@ -29,6 +41,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 1,
     name: "puppy",
     korName: "강아지",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-117",
+    memoTranslateY: "-111",
+    scale: 1,
     pairs: [
       { item1: 0, item2: 6 }, // Chocolate + Sun
       { item1: 1, item2: 6 }, // Chocolate + Sun
@@ -41,6 +59,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 2,
     name: "heart",
     korName: "하트",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 180, height: 180 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-112",
+    scale: 1.2,
     pairs: [
       { item1: 1, item2: 8 }, // Strawberry + Curry
       { item1: 0, item2: 2 }, // Strawberry + Curry
@@ -51,7 +75,13 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
   {
     id: 3,
     name: "primrose",
-    korName: "진달래",
+    korName: "흰앵초",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 180, height: 180 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-94",
+    scale: 1,
     pairs: [
       { item1: 1, item2: 5 }, // Curry + Smile
       { item1: 0, item2: 5 }, // Curry + Sun
@@ -63,6 +93,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 4,
     name: "book",
     korName: "너덜너덜 책",
+    translateX: "5",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-115",
+    scale: 1,
     pairs: [
       { item1: 1, item2: 7 }, // Chocolate + Spoon
       { item1: 2, item2: 5 }, // Chocolate + Spoon
@@ -74,6 +110,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 5,
     name: "gift",
     korName: "선물",
+    translateX: "5",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-90",
+    scale: 1,
     pairs: [
       { item1: 1, item2: 3 }, // Chocolate + Lemon
       { item1: 2, item2: 4 }, // Curry + Spoon
@@ -85,6 +127,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 6,
     name: "bunny",
     korName: "토끼",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-99",
+    scale: 1,
     pairs: [
       { item1: 0, item2: 4 }, // Strawberry + Lemon
       { item1: 2, item2: 3 }, // Spoon + Spoon
@@ -96,6 +144,12 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     id: 7,
     name: "cotton",
     korName: "솜",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 180, height: 180 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-105",
+    scale: 1,
     pairs: [
       { item1: 2, item2: 7 }, // Spoon + Spoon
       { item1: 3, item2: 8 }, // Lemon + Sun
@@ -104,8 +158,14 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
   },
   {
     id: 8,
-    name: "hea",
+    name: "apple",
     korName: "사과",
+    translateX: "0",
+    translateY: "0",
+    memoSize: { width: 196, height: 196 },
+    memoTranslateX: "-110",
+    memoTranslateY: "-110",
+    scale: 1,
     pairs: [
       { item1: 0, item2: 7 }, // Strawberry + Spoon
       { item1: 2, item2: 8 }, // Curry + Sun
@@ -140,15 +200,15 @@ const Memo = () => {
         </div>
       </div>
       <MatchingCombo matchingCombo={MEMO_COMBINATIONS} />
-      <div className="flex  items-center justify-center w-full mx-auto absolute bottom-1 ">
+      <div className="flex  items-center justify-center w-full mx-auto absolute bottom-5 ">
         <Link
           to="/"
           className="flex flex-col items-center justify-center mr-4 "
         >
           <Home width={32} height={32} className="mb-1" />
           <div className="flex flex-col items-center justify-center">
-            <p className=" text-sm text-white">홈으로 </p>
-            <p className=" text-sm text-white">돌아가기</p>
+            <p className=" text-[12px] text-white">홈으로 </p>
+            <p className="  text-[12px] text-white">돌아가기</p>
           </div>
         </Link>
 
@@ -158,8 +218,8 @@ const Memo = () => {
         >
           <Archive width={32} height={32} />
           <div className="flex flex-col items-center justify-center ">
-            <p className=" text-sm text-white">아카이빙</p>
-            <p className=" text-sm text-white">보러가기</p>
+            <p className="  text-[12px] text-white">아카이빙</p>
+            <p className="  text-[12px] text-white">보러가기</p>
           </div>
         </Link>
       </div>

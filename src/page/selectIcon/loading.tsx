@@ -144,7 +144,7 @@ const Loading = () => {
       })}
       <div className="relative w-full h-full"></div>
       <div>
-        <p className="text-white text-2xl font-bold mb-11">
+        <p className="text-white text-xl font-bold mb-11">
           {mode === "memo"
             ? "나만의 컨페티 만드는 중..."
             : "컨페티 보내는중..."}

@@ -25,15 +25,15 @@ interface SelectMemoListProps {
 }
 
 const MEMO_LIST: MemoItem[] = [
-  { id: 0, svg: <Strewberry /> },
-  { id: 1, svg: <Chacolate /> },
-  { id: 2, svg: <Curry /> },
-  { id: 3, svg: <Mike /> },
-  { id: 4, svg: <Lemon /> },
-  { id: 5, svg: <Dance /> },
-  { id: 6, svg: <Smile /> },
-  { id: 7, svg: <Spoon /> },
-  { id: 8, svg: <Sun /> },
+  { id: 0, svg: <Strewberry width={115} height={115} /> },
+  { id: 1, svg: <Chacolate width={115} height={115} /> },
+  { id: 2, svg: <Curry width={115} height={115} /> },
+  { id: 3, svg: <Mike width={115} height={115} /> },
+  { id: 4, svg: <Lemon width={125} height={125} /> },
+  { id: 5, svg: <Dance width={115} height={115} /> },
+  { id: 6, svg: <Smile width={105} height={105} /> },
+  { id: 7, svg: <Spoon width={105} height={105} /> },
+  { id: 8, svg: <Sun width={115} height={115} /> },
 ];
 
 const SelectMemoList = React.memo(
@@ -54,10 +54,7 @@ const SelectMemoList = React.memo(
             currentMemo?.includes(item.id) ? "memo-icon" : ""
           }`}
         >
-          {React.cloneElement(item.svg as React.ReactElement, {
-            width: 115,
-            height: 115,
-          })}
+          {React.cloneElement(item.svg as React.ReactElement)}
         </g>
       );
     });

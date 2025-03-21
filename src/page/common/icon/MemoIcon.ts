@@ -11,7 +11,7 @@ import Logo from "@/assets/icons/mainLogo.svg?react";
 import Chacolate from "@/assets/icons/chacolate.svg?react";
 import Curry from "@/assets/icons/curry.svg?react";
 import Dance from "@/assets/icons/dance.svg?react";
-import Lemon from "@/assets/icons/lemon.svg?react";
+import Lemon from "@/assets/icons/lemos.svg?react";
 import Mike from "@/assets/icons/mike.svg?react";
 import Smile from "@/assets/icons/smile.svg?react";
 import Spoon from "@/assets/icons/spoon.svg?react";

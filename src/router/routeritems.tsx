@@ -4,7 +4,8 @@ import Main from "../page/main/index";
 import SelectIcon from "../page/selectIcon/index";
 import Loading from "../page/selectIcon/loading";
 import Memo from "../page/memo/index";
-// import Write from "../page/write/Write";
+import Drop from "../page/drop";
+
 import MainLayout from "../layout/MainLayout";
 import Achive from "../page/achive";
 
@@ -36,6 +37,10 @@ const routerItems = [
       {
         path: "achive",
         element: <Achive />,
+      },
+      {
+        path: "drop",
+        element: <Drop />,
       },
       {
         path: "*",
