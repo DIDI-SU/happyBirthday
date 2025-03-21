@@ -36,6 +36,7 @@ import DogWStar from "@/assets/achiveIcon/dogWstar.svg?react";
 import GiftWStar from "@/assets/achiveIcon/giftWstar.svg?react";
 import BunnyWStar from "@/assets/achiveIcon/bunnyWstar.svg?react";
 import BigPaper from "@/assets/icons/paperBig.svg?react";
+import StraightLogo from "@/assets/icons/straightLogo.svg?react";
 
 export {
   Puppy,
@@ -76,4 +77,5 @@ export {
   GiftWStar,
   BunnyWStar,
   BigPaper,
+  StraightLogo,
 };

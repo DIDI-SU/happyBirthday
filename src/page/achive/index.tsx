@@ -15,8 +15,6 @@ import { MemoItem } from "../selectIcon/type/selectIcon";
 import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
-import AchiveLoading from "./achiveLoading";
-import { useMemoStore } from "../../store/useStore";
 import { AchiveItem } from "../common/types/type";
 
 const MEMO_LIST: MemoItem[] = [
@@ -33,7 +31,7 @@ const MEMO_LIST: MemoItem[] = [
 
 const Achive = () => {
   const { database } = useContext(FCMContext);
-  const { setMode } = useMemoStore();
+
   const [data, setData] = useState<AchiveItem[]>([]);
   const getData = async () => {
     if (!database) return;
@@ -48,16 +46,6 @@ const Achive = () => {
     getData();
   }, []);
 
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setMode("achive");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-  if (isLoading) {
-    return <AchiveLoading />;
-  }
   return (
     <>
       <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0">
