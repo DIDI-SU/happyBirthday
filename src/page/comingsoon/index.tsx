@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { ComingSoonImage } from "../common/icon/MemoIcon";
-import { useTranslation } from "react-i18next";
+import ComingSoonImage from "../../assets/image/package.png";
 import useSound from "use-sound";
 import { useNavigate } from "react-router-dom";
 const ComingSoon = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+
   const [isAnimating, setIsAnimating] = useState(false);
   const [play] = useSound("/sounds/coming.mp3", {
     sprite: {
@@ -33,19 +32,16 @@ const ComingSoon = () => {
         }`}
         onClick={handlePlay}
       >
-        <ComingSoonImage
-          width="100%"
-          height="auto"
+        <img
+          src={ComingSoonImage}
+          alt="Coming Soon"
           className="w-[300px] md:w-[500px] lg:w-[665px] mx-auto"
         />
       </div>
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-white  text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
-          {t("comingsoon.date")}
+          Click me!
         </h1>
-        <h2 className="text-white  text-base sm:text-xl md:text-2xl lg:text-2xl font-normal font-abordage">
-          {t("comingsoon.title")}
-        </h2>
       </div>
     </div>
   );
