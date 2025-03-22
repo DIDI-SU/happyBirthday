@@ -1,3 +1,5 @@
+import React from "react";
+
 import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
 import Main from "../page/main/index";
@@ -9,6 +11,14 @@ import Drop from "../page/drop";
 import MainLayout from "../layout/MainLayout";
 import Achive from "../page/achive";
 
+const ComingSoonLazy = React.lazy(() => import("../page/comingsoon"));
+const MainLazy = React.lazy(() => import("../page/main"));
+const SelectIconLazy = React.lazy(() => import("../page/selectIcon"));
+const MemoLazy = React.lazy(() => import("../page/memo"));
+const LoadingLazy = React.lazy(() => import("../page/selectIcon/loading"));
+const AchiveLazy = React.lazy(() => import("../page/achive"));
+const DropLazy = React.lazy(() => import("../page/drop"));
+
 const routerItems = [
   {
     path: "/",
@@ -16,31 +26,31 @@ const routerItems = [
     children: [
       {
         path: "",
-        element: <ComingSoon />,
+        element: <ComingSoonLazy />,
       },
       {
         path: "main",
-        element: <Main />,
+        element: <MainLazy />,
       },
       {
         path: "selectIcon",
-        element: <SelectIcon />,
+        element: <SelectIconLazy />,
       },
       {
         path: "memo",
-        element: <Memo />,
+        element: <MemoLazy />,
       },
       {
         path: "loading",
-        element: <Loading />,
+        element: <LoadingLazy />,
       },
       {
         path: "achive",
-        element: <Achive />,
+        element: <AchiveLazy />,
       },
       {
         path: "drop",
-        element: <Drop />,
+        element: <DropLazy />,
       },
       {
         path: "*",
