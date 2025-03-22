@@ -2,14 +2,8 @@ import React from "react";
 
 import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
-import Main from "../page/main/index";
-import SelectIcon from "../page/selectIcon/index";
-import Loading from "../page/selectIcon/loading";
-import Memo from "../page/memo/index";
-import Drop from "../page/drop";
 
 import MainLayout from "../layout/MainLayout";
-import Achive from "../page/achive";
 
 const ComingSoonLazy = React.lazy(() => import("../page/comingsoon"));
 const MainLazy = React.lazy(() => import("../page/main"));
