@@ -85,6 +85,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
       });
       setMessage({ id: 0, messages: "" });
       setMode("achive");
+      localStorage.setItem("memoId", message.id.toString());
       setCurrentMemoId(message.id);
       setValue(newMemoId.toString());
       navigate("/drop");

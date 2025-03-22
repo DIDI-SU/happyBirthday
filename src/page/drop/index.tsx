@@ -140,7 +140,7 @@ const Drop = () => {
 
       if (docSnap.exists()) {
         setData(docSnap.data() as AchiveItem);
-        setCurrentMemoId(docSnap.data()?.memoId);
+        console.log(docSnap.data());
       }
     }
   };
@@ -166,6 +166,7 @@ const Drop = () => {
       await getData();
       loadingTimer = setTimeout(() => {
         setIsLoading(false);
+        localStorage.removeItem("memoId");
         // 로딩 후에도 다시 한번 줌 레벨 확인
         resetZoom();
       }, 3000);

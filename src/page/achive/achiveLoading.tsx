@@ -30,33 +30,33 @@ const ACHIVE_MEMO_LIST: MemoItem[] = [
 ];
 
 const Loading = () => {
-  const { currentMemoId, setMode, mode } = useMemoStore();
+  const { setMode, mode } = useMemoStore();
 
   useEffect(() => {
     setMode("achive");
   }, []);
 
   const memos = useMemo(() => {
+    const currentMemoId = localStorage.getItem("memoId");
+
     if (currentMemoId === undefined || currentMemoId === null) return [];
 
-    const findMemo = currentMemoId.map((id) => ACHIVE_MEMO_LIST[id]);
+    const findMemo = ACHIVE_MEMO_LIST[Number(currentMemoId)];
     console.log(findMemo);
-    const increaseMemoItems = findMemo.map((item) => {
+    const increaseMemoItems = [findMemo];
+    const increaseMemoItems2 = increaseMemoItems.map((item) => {
       return { ...item, svg: item.svg };
     });
-    const increaseMemoItems2 = findMemo.map((item) => {
-      return { ...item, svg: item.svg };
-    });
-    const increaseMemoItems3 = findMemo.map((item) => {
+    const increaseMemoItems3 = increaseMemoItems2.map((item) => {
       return { ...item, svg: item.svg };
     });
     return [
-      ...findMemo,
+      findMemo,
       ...increaseMemoItems,
       ...increaseMemoItems2,
       ...increaseMemoItems3,
     ];
-  }, [currentMemoId, mode]);
+  }, []);
 
   const svgToUrl = (svgComponent: JSX.Element) => {
     try {
