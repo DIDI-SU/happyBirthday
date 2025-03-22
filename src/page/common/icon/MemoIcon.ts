@@ -19,7 +19,7 @@ import Strewberry from "@/assets/icons/strewberry.svg?react";
 import Sun from "@/assets/icons/sun.svg?react";
 import Pencil from "@/assets/icons/pencli.svg?react";
 import Arrow from "@/assets/icons/upArrow.svg?react";
-import DownArrow from "@/assets/icons/downArrow.svg?react";
+import DownArrow from "@/assets/icons/downarrow.svg?react";
 
 import Apple from "@/assets/icons/apple.svg?react";
 import Bunny from "@/assets/icons/bunny.svg?react";
