@@ -1,9 +1,9 @@
 export interface Icon {
   id: number;
-  left?: string | string;
-  top?: number | string;
-  bottom?: number | string;
-  right?: number | string;
+  left?: number;
+  top?: number;
+  bottom?: number;
+  right?: number;
 }
 
 export interface BackgroundIcons extends Icon {

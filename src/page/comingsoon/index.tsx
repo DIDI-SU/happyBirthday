@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Packege from "../../assets/image/package.png";
-// import { useTranslation } from "react-i18next";
+import ComingSoonImage from "../../assets/image/package.png";
 import useSound from "use-sound";
-import useCountdown from "./hooks/useCountdown";
+import { useNavigate } from "react-router-dom";
 const ComingSoon = () => {
-  const { days, hours, minutes, seconds } = useCountdown("2025-03-22 15:26:00");
-  // const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [isAnimating, setIsAnimating] = useState(false);
   const [play] = useSound("/sounds/coming.mp3", {
     sprite: {
@@ -19,6 +18,7 @@ const ComingSoon = () => {
       setIsAnimating(true);
       // 애니메이션 종료 후 상태 리셋
       setTimeout(() => setIsAnimating(false), 800); // 0.8초 후 리셋
+      navigate("/main");
     } catch (error) {
       console.error("오디오 재생 실패:", error);
     }
@@ -33,18 +33,15 @@ const ComingSoon = () => {
         onClick={handlePlay}
       >
         <img
-          src={Packege}
-          alt="Packege"
-          width="100%"
-          height="auto"
+          src={ComingSoonImage}
+          alt="Coming Soon"
           className="w-[300px] md:w-[500px] lg:w-[665px] mx-auto"
         />
       </div>
-      <div className="flex flex-row items-center justify-center text-white text-xl">
-        <p className="mr-2">{days} Days</p>
-        <p className="mr-2">{hours} Hours</p>
-        <p className="mr-2">{minutes} Minutes</p>
-        <p className="mr-2">{seconds} Seconds</p>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-white  text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
+          Click me!
+        </h1>
       </div>
     </div>
   );
