@@ -174,7 +174,7 @@ const MainLogo = () => {
             {isMobile && (
               <>
                 <g
-                  transform="translate(400 830)"
+                  transform="translate(350 830)"
                   onClick={() => navigate("/selectIcon")}
                   className="sm:w-[50px] sm:h-[50px] "
                 >
@@ -204,7 +204,7 @@ const MainLogo = () => {
                   </text>
                 </g>
                 <g
-                  transform="translate(550 830)"
+                  transform="translate(560 830)"
                   onClick={() => navigate("/achive")}
                 >
                   <Archive
