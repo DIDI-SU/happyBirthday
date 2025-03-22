@@ -17,6 +17,8 @@ import {
   OrangeStar,
   Pencil,
   Archive,
+  Arrow,
+  DownArrow,
 } from "../../common/icon/MemoIcon";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -104,12 +106,25 @@ const MainLogo = () => {
 
               {/* 얼굴 이미지 */}
               {currentPicRef.current}
+              <g transform="translate(-320 -100)" className="z-[200] ">
+                <DraggableSVGElement>
+                  <Link to="https://youtu.be/FBqN2VfcoV4?feature=shared">
+                    <Ticket width={371} height={481} />
+                  </Link>
+                </DraggableSVGElement>
+              </g>
 
-              <g transform="translate(-50 260)" className="z-[200] ">
-                <DraggableSVGElement rotation={-10.5}>
+              <g transform="translate(-140 260)" className="z-[300] ">
+                <DraggableSVGElement rotation={10.5}>
                   <Book width={110} height={110} className=" opacity-[1]" />
                 </DraggableSVGElement>
               </g>
+
+              {!isMobile && (
+                <g transform="translate(-290 180)">
+                  <DownArrow width={200} height={200} />
+                </g>
+              )}
               <g transform="translate(300 -200)">
                 <DraggableSVGElement rotation={10.5}>
                   <PostStemp width={128} height={156} />
@@ -123,6 +138,11 @@ const MainLogo = () => {
                   <Clover width={99} height={99} />
                 </DraggableSVGElement>
               </g>
+              {!isMobile && (
+                <g transform="translate(440 -40)">
+                  <Arrow width={150} height={150} />
+                </g>
+              )}
               <g transform="translate(420 -100)">
                 <DraggableSVGElement rotation={18.5}>
                   <BlueStar width={39} height={39} />
@@ -143,13 +163,7 @@ const MainLogo = () => {
                   <Puppy width={110} height={110} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(-320 -100)">
-                <DraggableSVGElement>
-                  <Link to="https://youtu.be/FBqN2VfcoV4?feature=shared">
-                    <Ticket width={371} height={481} />
-                  </Link>
-                </DraggableSVGElement>
-              </g>
+
               <g transform="translate(-260 110)">
                 <DraggableSVGElement>
                   <RedStar width={50} height={50} />
@@ -159,7 +173,6 @@ const MainLogo = () => {
 
             {isMobile && (
               <>
-                {" "}
                 <g
                   transform="translate(400 800)"
                   onClick={() => navigate("/selectIcon")}

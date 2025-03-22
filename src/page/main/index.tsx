@@ -1,5 +1,6 @@
 import MainLogo from "./mainlogo/MainLogo";
 import Arrow from "@/assets/icons/arrow.png";
+import UnderArrow from "@/assets/icons/underArrow.png";
 import { useState, useEffect } from "react";
 const Main = () => {
   const [isMobile, setIsMobile] = useState(
@@ -31,11 +32,6 @@ const Main = () => {
   return (
     <section className=" relative w-[100%] flex flex-col items-center justify-center ">
       <MainLogo />
-      {!isMobile && (
-        <div className="flex items-center justify-center fixed bottom-[54%] right-[7%] w-[10%] ">
-          <img src={Arrow} alt="arrow" className="w-full h-full" />
-        </div>
-      )}
     </section>
   );
 };
