@@ -121,7 +121,7 @@ const MainLogo = () => {
               </g>
 
               {!isMobile && (
-                <g transform="translate(-290 180)">
+                <g transform="translate(-300 180)">
                   <DownArrow width={200} height={200} />
                 </g>
               )}
