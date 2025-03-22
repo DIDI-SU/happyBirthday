@@ -61,6 +61,33 @@ const MainLogo = () => {
     console.log("forceUpdate", forceUpdate);
   }, [forceUpdate]);
 
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  // 리사이즈 이벤트 감지하여 isMobile 상태 업데이트
+  useEffect(() => {
+    // 리사이즈 핸들러 함수
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // 초기 설정
+    handleResize();
+
+    // 리사이즈 이벤트 리스너 등록
+    window.addEventListener("resize", handleResize);
+
+    // 클린업 함수 (컴포넌트 언마운트 시 이벤트 리스너 제거)
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // 빈 의존성 배열로 마운트 시 한 번만 실행
+
+  useEffect(() => {
+    console.log("isMobile", isMobile);
+  }, [isMobile]);
+
   return (
     <>
       <section className="relative flex items-center justify-center w-full px-4 sm:px-6 md:px-8">
@@ -130,69 +157,74 @@ const MainLogo = () => {
               </g>
             </g>
 
-            <g
-              transform="translate(400 800)"
-              onClick={() => navigate("/selectIcon")}
-              className="sm:w-[50px] sm:h-[50px] "
-            >
-              <Pencil
-                width={window.innerWidth < 640 ? 50 : 32}
-                height={window.innerWidth < 640 ? 50 : 32}
-              />
-              <text
-                x="25"
-                y="60" // 아이콘 아래에 위치하도록 y값 조정
-                textAnchor="middle"
-                fill={"white"}
-                fontSize={15}
-                fontFamily="sans-serif"
-                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-              >
-                컨페티
-              </text>
-              <text
-                x="25"
-                y="80" // 아이콘 아래에 위치하도록 y값 조정
-                textAnchor="middle"
-                fill={"white"}
-                fontSize={15}
-                fontFamily="sans-serif"
-                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-              >
-                작성하기
-              </text>
-            </g>
-            <g
-              transform="translate(550 800)"
-              onClick={() => navigate("/achive")}
-            >
-              <Archive
-                width={window.innerWidth < 640 ? 50 : 32}
-                height={window.innerWidth < 640 ? 50 : 32}
-              />
-              <text
-                x="25"
-                y="60" // 아이콘 아래에 위치하도록 y값 조정
-                textAnchor="middle"
-                fill={"white"}
-                fontSize={15}
-                fontFamily="sans-serif"
-                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-              >
-                아카이빙
-              </text>
-              <text
-                x="25"
-                y="80" // 아이콘 아래에 위치하도록 y값 조정
-                textAnchor="middle"
-                fill={"white"}
-                fontSize={15}
-                fontFamily="sans-serif"
-                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-              >
-                보러가기
-              </text>
-            </g>
+            {isMobile && (
+              <>
+                {" "}
+                <g
+                  transform="translate(400 800)"
+                  onClick={() => navigate("/selectIcon")}
+                  className="sm:w-[50px] sm:h-[50px] "
+                >
+                  <Pencil
+                    width={window.innerWidth < 640 ? 50 : 32}
+                    height={window.innerWidth < 640 ? 50 : 32}
+                  />
+                  <text
+                    x="25"
+                    y="60" // 아이콘 아래에 위치하도록 y값 조정
+                    textAnchor="middle"
+                    fill={"white"}
+                    fontSize={15}
+                    fontFamily="sans-serif"
+                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                  >
+                    컨페티
+                  </text>
+                  <text
+                    x="25"
+                    y="80" // 아이콘 아래에 위치하도록 y값 조정
+                    textAnchor="middle"
+                    fill={"white"}
+                    fontSize={15}
+                    fontFamily="sans-serif"
+                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                  >
+                    작성하기
+                  </text>
+                </g>
+                <g
+                  transform="translate(550 800)"
+                  onClick={() => navigate("/achive")}
+                >
+                  <Archive
+                    width={window.innerWidth < 640 ? 50 : 32}
+                    height={window.innerWidth < 640 ? 50 : 32}
+                  />
+                  <text
+                    x="25"
+                    y="60" // 아이콘 아래에 위치하도록 y값 조정
+                    textAnchor="middle"
+                    fill={"white"}
+                    fontSize={15}
+                    fontFamily="sans-serif"
+                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                  >
+                    아카이빙
+                  </text>
+                  <text
+                    x="25"
+                    y="80" // 아이콘 아래에 위치하도록 y값 조정
+                    textAnchor="middle"
+                    fill={"white"}
+                    fontSize={15}
+                    fontFamily="sans-serif"
+                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                  >
+                    보러가기
+                  </text>
+                </g>
+              </>
+            )}
           </svg>
         </div>
       </section>
