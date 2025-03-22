@@ -57,7 +57,6 @@ const MEMO_LIST: MemoItem[] = [
 ];
 
 const Drop = () => {
-  const { setCurrentMemoId } = useMemoStore();
   const { database } = useContext(FCMContext);
   const [data, setData] = useState<AchiveItem | null>(null);
   const [isLoading, setIsLoading] = useState(true);
