@@ -106,17 +106,17 @@ const MainLogo = () => {
 
               {/* 얼굴 이미지 */}
               {currentPicRef.current}
-              <g transform="translate(-320 -100)" className="z-[200] ">
+              <g transform="translate(-350 -110)" className="z-[200] ">
                 <DraggableSVGElement>
                   <Link to="https://youtu.be/FBqN2VfcoV4?feature=shared">
-                    <Ticket width={371} height={481} />
+                    <Ticket width={371} height={401} />
                   </Link>
                 </DraggableSVGElement>
               </g>
 
               <g transform="translate(-140 260)" className="z-[300] ">
                 <DraggableSVGElement rotation={10.5}>
-                  <Book width={110} height={110} className=" opacity-[1]" />
+                  <Book width={100} height={100} className=" opacity-[1]" />
                 </DraggableSVGElement>
               </g>
 
@@ -158,7 +158,7 @@ const MainLogo = () => {
                   <Logo width={309} height={154} />
                 </DraggableSVGElement>
               </g>
-              <g transform="translate(-300 -200)">
+              <g transform="translate(-290 -200)">
                 <DraggableSVGElement rotation={-10.5}>
                   <Puppy width={110} height={110} />
                 </DraggableSVGElement>
@@ -166,7 +166,7 @@ const MainLogo = () => {
 
               <g transform="translate(-260 110)">
                 <DraggableSVGElement>
-                  <RedStar width={50} height={50} />
+                  <RedStar width={40} height={40} />
                 </DraggableSVGElement>
               </g>
             </g>
