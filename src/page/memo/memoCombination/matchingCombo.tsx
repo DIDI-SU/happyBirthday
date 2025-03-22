@@ -200,11 +200,15 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           {t(`confetti.characters.${findMatchingCombination?.name}.title`)}
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center max-h-[35dvh] w-full mx-auto ">
+      <div
+        className={`${
+          window.innerWidth > 768 ? "min-h-[350px]" : "min-h-[35dvh]"
+        } flex flex-col items-center justify-center  w-full mx-auto  `}
+      >
         <svg
           viewBox="0 0 309 309"
-          width="309"
-          height="309"
+          width={window.innerWidth > 768 ? "500px" : "100%"}
+          height={window.innerWidth > 768 ? "500px" : "100%"}
           preserveAspectRatio="xMidYMid meet"
         >
           {IconComponent}

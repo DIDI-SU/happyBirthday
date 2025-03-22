@@ -63,7 +63,7 @@ const MEMO_COMBINATIONS: MemoCombination[] = [
     translateY: "0",
     memoSize: { width: 180, height: 180 },
     memoTranslateX: "-110",
-    memoTranslateY: "-112",
+    memoTranslateY: "-96",
     scale: 1.2,
     pairs: [
       { item1: 1, item2: 8 }, // Strawberry + Curry
