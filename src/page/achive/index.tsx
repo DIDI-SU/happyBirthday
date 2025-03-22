@@ -47,19 +47,31 @@ const Achive = () => {
     getData();
   }, []);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0">
         <Link to="/main">
-          <WideLogo className="min-w-[200px]" />
+          <div
+            className={`flex items-center justify-center w-[${
+              isMobile ? "200px" : "400px"
+            }]`}
+          >
+            <WideLogo className={`min-w-[${isMobile ? "200px" : "200px"}]`} />
+          </div>
         </Link>
       </section>
       <section
-        className={`flex flex-row flex-wrap items-center ${
-          data.length === 1
-            ? "justify-start sm:justify-center"
-            : "justify-center"
-        } w-full absolute top-[13%] p-6`}
+        className={`flex flex-row flex-wrap items-center justify-center w-full absolute top-[13%] p-6`}
       >
         {data?.map((item) => (
           <div

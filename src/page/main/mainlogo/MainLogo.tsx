@@ -114,7 +114,11 @@ const MainLogo = () => {
                 </DraggableSVGElement>
               </g>
 
-              <g transform="translate(-140 260)" className="z-[300] ">
+              <g
+                transform="translate(-140 260)"
+                className="z-[300] "
+                onClick={() => navigate("/achive")}
+              >
                 <DraggableSVGElement rotation={10.5}>
                   <Book width={100} height={100} className=" opacity-[1]" />
                 </DraggableSVGElement>
