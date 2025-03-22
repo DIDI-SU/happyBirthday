@@ -16,6 +16,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
 import { AchiveItem } from "../common/types/type";
+import { Link } from "react-router-dom";
 
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <CloverWStar width={250} height={250} /> },
@@ -49,7 +50,9 @@ const Achive = () => {
   return (
     <>
       <section className="flex flex-row items-center justify-start w-full p-6 absolute top-0">
-        <WideLogo className="min-w-[200px]" />
+        <Link to="/main">
+          <WideLogo className="min-w-[200px]" />
+        </Link>
       </section>
       <section
         className={`flex flex-row flex-wrap items-center ${
