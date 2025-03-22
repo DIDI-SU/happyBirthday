@@ -133,68 +133,65 @@ const MainLogo = () => {
             <g
               transform="translate(400 800)"
               onClick={() => navigate("/selectIcon")}
+              className="sm:w-[50px] sm:h-[50px] "
             >
-              <Link
-                to="/selectIcon"
-                className="flex flex-col items-center justify-center  "
+              <Pencil
+                width={window.innerWidth < 640 ? 50 : 32}
+                height={window.innerWidth < 640 ? 50 : 32}
+              />
+              <text
+                x="25"
+                y="60" // 아이콘 아래에 위치하도록 y값 조정
+                textAnchor="middle"
+                fill={"white"}
+                fontSize={15}
+                fontFamily="sans-serif"
+                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
               >
-                <Pencil width={32} height={32} />
-                <text
-                  x="15"
-                  y="60" // 아이콘 아래에 위치하도록 y값 조정
-                  textAnchor="middle"
-                  fill={"white"}
-                  fontSize={15}
-                  fontFamily="sans-serif"
-                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-                >
-                  컨페티
-                </text>
-                <text
-                  x="15"
-                  y="80" // 아이콘 아래에 위치하도록 y값 조정
-                  textAnchor="middle"
-                  fill={"white"}
-                  fontSize={15}
-                  fontFamily="sans-serif"
-                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-                >
-                  작성하기
-                </text>
-              </Link>
+                컨페티
+              </text>
+              <text
+                x="25"
+                y="80" // 아이콘 아래에 위치하도록 y값 조정
+                textAnchor="middle"
+                fill={"white"}
+                fontSize={15}
+                fontFamily="sans-serif"
+                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+              >
+                작성하기
+              </text>
             </g>
             <g
               transform="translate(550 800)"
               onClick={() => navigate("/achive")}
             >
-              <Link
-                to="/achive"
-                className="flex flex-col items-center justify-center "
+              <Archive
+                width={window.innerWidth < 640 ? 50 : 32}
+                height={window.innerWidth < 640 ? 50 : 32}
+              />
+              <text
+                x="25"
+                y="60" // 아이콘 아래에 위치하도록 y값 조정
+                textAnchor="middle"
+                fill={"white"}
+                fontSize={15}
+                fontFamily="sans-serif"
+                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
               >
-                <Archive width={32} height={32} />
-                <text
-                  x="15"
-                  y="60" // 아이콘 아래에 위치하도록 y값 조정
-                  textAnchor="middle"
-                  fill={"white"}
-                  fontSize={15}
-                  fontFamily="sans-serif"
-                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-                >
-                  아카이빙
-                </text>
-                <text
-                  x="15"
-                  y="80" // 아이콘 아래에 위치하도록 y값 조정
-                  textAnchor="middle"
-                  fill={"white"}
-                  fontSize={15}
-                  fontFamily="sans-serif"
-                  style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
-                >
-                  보러가기
-                </text>
-              </Link>
+                아카이빙
+              </text>
+              <text
+                x="25"
+                y="80" // 아이콘 아래에 위치하도록 y값 조정
+                textAnchor="middle"
+                fill={"white"}
+                fontSize={15}
+                fontFamily="sans-serif"
+                style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+              >
+                보러가기
+              </text>
             </g>
           </svg>
         </div>
