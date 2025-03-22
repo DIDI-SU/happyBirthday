@@ -95,7 +95,7 @@ const MainLogo = () => {
       <section className="relative flex items-center justify-center w-full px-4 sm:px-6 md:px-8">
         <div className="relative w-full flex justify-center flex-col items-center">
           <svg
-            viewBox="0 0 1000 1000"
+            viewBox={"0 0 1000 1000"}
             className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[1200px] xl:w-[1200px] max-w-[1200px] "
           >
             {/* 배경 이미지 */}
@@ -174,7 +174,7 @@ const MainLogo = () => {
             {isMobile && (
               <>
                 <g
-                  transform="translate(400 800)"
+                  transform="translate(400 830)"
                   onClick={() => navigate("/selectIcon")}
                   className="sm:w-[50px] sm:h-[50px] "
                 >
@@ -184,27 +184,27 @@ const MainLogo = () => {
                   />
                   <text
                     x="45"
-                    y="100" // 아이콘 아래에 위치하도록 y값 조정
+                    y="110" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={18}
+                    fontSize={21}
                     style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     컨페티
                   </text>
                   <text
                     x="45"
-                    y="120" // 아이콘 아래에 위치하도록 y값 조정
+                    y="140" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={18}
+                    fontSize={21}
                     style={{ pointerEvents: "none", fontWeight: "bold" }}
                   >
                     작성하기
                   </text>
                 </g>
                 <g
-                  transform="translate(550 800)"
+                  transform="translate(550 830)"
                   onClick={() => navigate("/achive")}
                 >
                   <Archive
@@ -213,20 +213,20 @@ const MainLogo = () => {
                   />
                   <text
                     x="40"
-                    y="100" // 아이콘 아래에 위치하도록 y값 조정
+                    y="110" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={18}
+                    fontSize={21}
                     style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     아카이빙
                   </text>
                   <text
                     x="40"
-                    y="120" // 아이콘 아래에 위치하도록 y값 조정
+                    y="140" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={18}
+                    fontSize={21}
                     style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     보러가기
