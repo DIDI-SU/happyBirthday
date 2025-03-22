@@ -63,10 +63,10 @@ const Achive = () => {
         <Link to="/main">
           <div
             className={`flex items-center justify-center w-[${
-              isMobile ? "200px" : "400px"
+              isMobile ? "30%" : "400px"
             }]`}
           >
-            <WideLogo className={`min-w-[${isMobile ? "200px" : "200px"}]`} />
+            <WideLogo className={`w-full`} />
           </div>
         </Link>
       </section>
