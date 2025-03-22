@@ -207,8 +207,8 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
       >
         <svg
           viewBox="0 0 309 309"
-          width={window.innerWidth > 768 ? "450px" : "80%"}
-          height={window.innerWidth > 768 ? "450px" : "80%"}
+          width={window.innerWidth > 768 ? "450px" : "75%"}
+          height={window.innerWidth > 768 ? "450px" : "75%"}
           preserveAspectRatio="xMidYMid meet"
         >
           {IconComponent}
