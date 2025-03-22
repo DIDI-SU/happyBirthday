@@ -59,7 +59,6 @@ const MEMO_LIST: MemoItem[] = [
 const Drop = () => {
   const { setCurrentMemoId } = useMemoStore();
   const { database } = useContext(FCMContext);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState<AchiveItem | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -67,6 +66,55 @@ const Drop = () => {
     width: typeof window !== "undefined" ? window.innerWidth : 0,
     height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
+
+  // 화면 줌 레벨 초기화 (100%로 설정)
+  useEffect(() => {
+    // 1. meta viewport 태그 조정
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      );
+    }
+
+    // 2. 줌 레벨 자바스크립트로 초기화 (모바일에서 더 효과적인 방법)
+    if (typeof window !== "undefined" && "visualViewport" in window) {
+      window.visualViewport?.addEventListener("resize", resetZoom);
+
+      // 페이지 로드 시 자동으로 줌 레벨 초기화
+      resetZoom();
+    }
+
+    return () => {
+      if (typeof window !== "undefined" && "visualViewport" in window) {
+        window.visualViewport?.removeEventListener("resize", resetZoom);
+      }
+    };
+  }, []);
+
+  // 줌 레벨 100%로 초기화하는 함수
+  const resetZoom = () => {
+    // CSS 스케일링
+    document.body.style.transform = "scale(1)";
+    document.body.style.transformOrigin = "center top";
+
+    // iOS Safari에서 효과적인 방법
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+      setTimeout(() => {
+        // 텍스트 크기 변경 트릭으로 리플로우 강제 유발
+        const originalFontSize = document.body.style.fontSize;
+        document.body.style.fontSize = "1.001em";
+        setTimeout(() => {
+          document.body.style.fontSize = originalFontSize;
+        }, 0);
+      }, 300);
+    }
+
+    // 스크롤 맨 위로 초기화
+    window.scrollTo(0, 0);
+  };
 
   // 윈도우 크기에 따른 위치 계산 함수들
   const getStartX = () => {
@@ -118,12 +166,13 @@ const Drop = () => {
       await getData();
       loadingTimer = setTimeout(() => {
         setIsLoading(false);
+        // 로딩 후에도 다시 한번 줌 레벨 확인
+        resetZoom();
       }, 3000);
     };
 
     initializeData();
 
-    // 클린업 함수
     return () => {
       if (loadingTimer) clearTimeout(loadingTimer);
     };
