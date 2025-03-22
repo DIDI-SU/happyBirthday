@@ -1,9 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 
-import ComingSoon from "../page/comingsoon";
 import Error404 from "../page/error/404";
 
 import MainLayout from "../layout/MainLayout";
+
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center h-screen bg-black">
+    <div className="animate-pulse text-white text-xl">로딩 중...</div>
+  </div>
+);
 
 const ComingSoonLazy = React.lazy(() => import("../page/comingsoon"));
 const MainLazy = React.lazy(() => import("../page/main"));
@@ -20,15 +25,27 @@ const routerItems = [
     children: [
       {
         path: "",
-        element: <ComingSoonLazy />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ComingSoonLazy />
+          </Suspense>
+        ),
       },
       {
         path: "main",
-        element: <MainLazy />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <MainLazy />
+          </Suspense>
+        ),
       },
       {
         path: "selectIcon",
-        element: <SelectIconLazy />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <SelectIconLazy />
+          </Suspense>
+        ),
       },
       {
         path: "memo",

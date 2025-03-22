@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import ComingSoonImage from "../../assets/image/package.png";
 import useSound from "use-sound";
 import { useNavigate } from "react-router-dom";
@@ -32,13 +32,11 @@ const ComingSoon = () => {
         }`}
         onClick={handlePlay}
       >
-        <Suspense fallback={<div>Loading...</div>}>
-          <img
-            src={ComingSoonImage}
-            alt="Coming Soon"
-            className="w-[300px] md:w-[500px] lg:w-[665px] mx-auto"
-          />
-        </Suspense>
+        <img
+          src={ComingSoonImage}
+          alt="Coming Soon"
+          className="w-[300px] md:w-[500px] lg:w-[665px] mx-auto"
+        />
       </div>
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-white  text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-abordage">
