@@ -1,6 +1,5 @@
 import MainLogo from "./mainlogo/MainLogo";
-import Arrow from "@/assets/icons/arrow.png";
-import UnderArrow from "@/assets/icons/underArrow.png";
+
 import { useState, useEffect } from "react";
 const Main = () => {
   const [isMobile, setIsMobile] = useState(
