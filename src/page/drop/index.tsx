@@ -29,6 +29,7 @@ import { MemoItem } from "../selectIcon/type/selectIcon";
 import AchiveLoading from "../achive/achiveLoading";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { useMemoStore } from "../../store/useStore";
 
 const ACHIVE_MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={220} height={220} /> },
@@ -56,6 +57,7 @@ const MEMO_LIST: MemoItem[] = [
 ];
 
 const Drop = () => {
+  const { setCurrentMemoId } = useMemoStore();
   const { database } = useContext(FCMContext);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState<AchiveItem | null>(null);
@@ -90,6 +92,7 @@ const Drop = () => {
 
       if (docSnap.exists()) {
         setData(docSnap.data() as AchiveItem);
+        setCurrentMemoId(docSnap.data()?.memoId);
       }
     }
   };

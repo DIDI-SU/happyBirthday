@@ -37,10 +37,10 @@ const Loading = () => {
   }, []);
 
   const memos = useMemo(() => {
-    if (!currentMemoId) return [];
+    if (currentMemoId === undefined || currentMemoId === null) return [];
 
     const findMemo = currentMemoId.map((id) => ACHIVE_MEMO_LIST[id]);
-
+    console.log(findMemo);
     const increaseMemoItems = findMemo.map((item) => {
       return { ...item, svg: item.svg };
     });
@@ -70,6 +70,7 @@ const Loading = () => {
   };
 
   const memoImages = useMemo(() => {
+    console.log(memos);
     if (!memos || memos.length === 0) return [""];
     return memos
       .map((memo) => {
