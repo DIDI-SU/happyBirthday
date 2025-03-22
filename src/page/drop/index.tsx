@@ -29,7 +29,6 @@ import { MemoItem } from "../selectIcon/type/selectIcon";
 import AchiveLoading from "../achive/achiveLoading";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { useMemoStore } from "../../store/useStore";
 
 const ACHIVE_MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={220} height={220} /> },
