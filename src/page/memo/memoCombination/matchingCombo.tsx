@@ -214,7 +214,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
           {IconComponent}
         </svg>
       </div>
-      <div className="flex flex-col items-center justify-center w-full  mt-[38px] ">
+      <div className="flex flex-col items-center justify-center w-full  mt-[18px] ">
         <p className=" text-white  text-nowrap text-[16px] leading-6 ">
           {t(
             `confetti.characters.${findMatchingCombination?.name}.description1`
