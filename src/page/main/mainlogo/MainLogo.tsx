@@ -179,28 +179,26 @@ const MainLogo = () => {
                   className="sm:w-[50px] sm:h-[50px] "
                 >
                   <Pencil
-                    width={window.innerWidth < 640 ? 50 : 32}
-                    height={window.innerWidth < 640 ? 50 : 32}
+                    width={window.innerWidth < 640 ? 80 : 32}
+                    height={window.innerWidth < 640 ? 80 : 32}
                   />
                   <text
-                    x="25"
-                    y="60" // 아이콘 아래에 위치하도록 y값 조정
+                    x="45"
+                    y="100" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={15}
-                    fontFamily="sans-serif"
-                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                    fontSize={18}
+                    style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     컨페티
                   </text>
                   <text
-                    x="25"
-                    y="80" // 아이콘 아래에 위치하도록 y값 조정
+                    x="45"
+                    y="120" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={15}
-                    fontFamily="sans-serif"
-                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                    fontSize={18}
+                    style={{ pointerEvents: "none", fontWeight: "bold" }}
                   >
                     작성하기
                   </text>
@@ -210,28 +208,26 @@ const MainLogo = () => {
                   onClick={() => navigate("/achive")}
                 >
                   <Archive
-                    width={window.innerWidth < 640 ? 50 : 32}
-                    height={window.innerWidth < 640 ? 50 : 32}
+                    width={window.innerWidth < 640 ? 80 : 32}
+                    height={window.innerWidth < 640 ? 80 : 32}
                   />
                   <text
-                    x="25"
-                    y="60" // 아이콘 아래에 위치하도록 y값 조정
+                    x="40"
+                    y="100" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={15}
-                    fontFamily="sans-serif"
-                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                    fontSize={18}
+                    style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     아카이빙
                   </text>
                   <text
-                    x="25"
-                    y="80" // 아이콘 아래에 위치하도록 y값 조정
+                    x="40"
+                    y="120" // 아이콘 아래에 위치하도록 y값 조정
                     textAnchor="middle"
                     fill={"white"}
-                    fontSize={15}
-                    fontFamily="sans-serif"
-                    style={{ pointerEvents: "none" }} // 텍스트가 클릭을 방해하지 않도록
+                    fontSize={18}
+                    style={{ pointerEvents: "none", fontWeight: "bold" }} // 텍스트가 클릭을 방해하지 않도록
                   >
                     보러가기
                   </text>
