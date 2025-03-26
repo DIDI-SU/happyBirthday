@@ -12,11 +12,21 @@ import {
 } from "../common/icon/MemoIcon";
 
 import { MemoItem } from "../selectIcon/type/selectIcon";
-import { getDocs, collection } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  orderBy,
+  limit,
+  startAfter,
+  DocumentSnapshot,
+} from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { useContext, useEffect, useState } from "react";
 import { AchiveItem } from "../common/types/type";
 import { Link } from "react-router-dom";
+import { Text } from "@visx/text";
+import { useInView } from "react-intersection-observer";
 
 const MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <CloverWStar width={250} height={250} /> },
@@ -32,20 +42,56 @@ const MEMO_LIST: MemoItem[] = [
 
 const Achive = () => {
   const { database } = useContext(FCMContext);
-
   const [data, setData] = useState<AchiveItem[]>([]);
+  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const { ref, inView } = useInView();
+
+  const LIMIT = 10; // 한 번에 가져올 데이터 수
+
   const getData = async () => {
-    if (!database) return;
-    const data = await getDocs(collection(database, "message"));
-    const dataArray = data.docs.map((doc) => doc.data());
-    if (dataArray.length > 0) {
-      setData(dataArray as AchiveItem[]);
+    if (!database || !hasMore) return;
+
+    try {
+      let q;
+      if (lastDoc) {
+        q = query(
+          collection(database, "message"),
+          orderBy("createdAt", "desc"),
+          startAfter(lastDoc),
+          limit(LIMIT)
+        );
+      } else {
+        q = query(
+          collection(database, "message"),
+          orderBy("createdAt", "desc"),
+          limit(LIMIT)
+        );
+      }
+
+      const snapshots = await getDocs(q);
+      const newData = snapshots.docs.map((doc) => doc.data() as AchiveItem);
+
+      if (newData.length < LIMIT) {
+        setHasMore(false);
+      }
+
+      setLastDoc(snapshots.docs[snapshots.docs.length - 1]);
+      setData((prev) => [...prev, ...newData]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, []); // 초기 데이터 로드
+
+  useEffect(() => {
+    if (inView && hasMore) {
+      getData();
+    }
+  }, [inView]); // 스크롤이 하단에 도달하면 추가 데이터 로드
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -76,18 +122,39 @@ const Achive = () => {
         {data?.map((item) => (
           <div
             key={item.createdAt}
-            className={`relative h-[250px] flex items-center justify-center min-w-[200px] min-h-[200px] ${
+            className={`relative h-[250px] w-[250px] flex items-center justify-center ${
               data.length === 1 ? "mr-5" : "mx-3 my-3"
             }`}
           >
-            {MEMO_LIST[item.memoId].svg}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-gray-600 text-center text-md font-bold break-words whitespace-pre-wrap max-w-[180px] overflow-wrap-anywhere">
-                {item.memoText}
-              </p>
-            </div>
+            <svg width="250" height="250" viewBox="0 0 250 250">
+              <g>
+                {MEMO_LIST[item.memoId].svg}
+                <Text
+                  x={125}
+                  y={125}
+                  width={120}
+                  height={150}
+                  verticalAnchor="middle"
+                  textAnchor="middle"
+                  fill="#4B5563"
+                  fontSize={14}
+                  fontWeight="bold"
+                  style={{ wordBreak: "break-word" }}
+                >
+                  {item.memoText}
+                </Text>
+              </g>
+            </svg>
           </div>
         ))}
+        {hasMore && (
+          <div
+            ref={ref}
+            className="w-full h-10 flex items-center justify-center"
+          >
+            <span className="text-gray-500">데이터를 불러오는 중...</span>
+          </div>
+        )}
       </section>
     </>
   );

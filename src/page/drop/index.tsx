@@ -177,6 +177,8 @@ const Drop = () => {
     };
   }, [database]);
 
+  // 전체 메시지 데이터 다운로드 함수
+
   // 로딩 중이면 로딩 화면 표시
   if (isLoading) {
     return <AchiveLoading />;
