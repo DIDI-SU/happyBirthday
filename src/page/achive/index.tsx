@@ -29,15 +29,15 @@ import { Text } from "@visx/text";
 import { useInView } from "react-intersection-observer";
 
 const MEMO_LIST: MemoItem[] = [
-  { id: 0, svg: <CloverWStar width={250} height={250} />, x: 130, y: 125 },
-  { id: 1, svg: <DogWStar width={250} height={250} />, x: 125, y: 125 },
-  { id: 2, svg: <HeartWStar width={250} height={250} />, x: 125, y: 125 },
-  { id: 3, svg: <FlowerWStar width={250} height={250} />, x: 125, y: 125 },
-  { id: 4, svg: <BookWStar width={250} height={250} />, x: 125, y: 110 },
-  { id: 5, svg: <GiftWStar width={250} height={250} />, x: 125, y: 125 },
-  { id: 6, svg: <BunnyWStar width={250} height={250} />, x: 120, y: 130 },
-  { id: 7, svg: <CottonWStar width={250} height={250} />, x: 125, y: 125 },
-  { id: 8, svg: <AppleWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 0, svg: <CloverWStar width={300} height={300} />, x: 160, y: 150 },
+  { id: 1, svg: <DogWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 2, svg: <HeartWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 3, svg: <FlowerWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 4, svg: <BookWStar width={300} height={300} />, x: 150, y: 130 },
+  { id: 5, svg: <GiftWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 6, svg: <BunnyWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 7, svg: <CottonWStar width={300} height={300} />, x: 150, y: 150 },
+  { id: 8, svg: <AppleWStar width={300} height={300} />, x: 150, y: 150 },
 ];
 
 const Achive = () => {
@@ -126,23 +126,23 @@ const Achive = () => {
               data.length === 1 ? "mr-5" : "mx-3 my-3"
             }`}
           >
-            <svg width="250" height="250" viewBox="0 0 250 250">
+            <svg width="300" height="300" viewBox="0 0 300 300">
               <g>
                 {MEMO_LIST[item.memoId].svg}
-                <Text
-                  x={MEMO_LIST[item.memoId].x}
-                  y={MEMO_LIST[item.memoId].y}
-                  width={200}
-                  height={150}
-                  verticalAnchor="middle"
-                  textAnchor="middle"
-                  fill="#4B5563"
-                  fontSize={14}
-                  fontWeight="bold"
-                  style={{ wordBreak: "break-word" }}
-                >
-                  {item.memoText}
-                </Text>
+                <g width="100" height="200">
+                  <Text
+                    x={MEMO_LIST[item.memoId].x}
+                    y={MEMO_LIST[item.memoId].y}
+                    width={200}
+                    verticalAnchor="middle"
+                    textAnchor="middle"
+                    fill="#4B5563"
+                    fontSize={15}
+                    fontWeight="bold"
+                  >
+                    {item.memoText}
+                  </Text>
+                </g>
               </g>
             </svg>
           </div>
