@@ -29,15 +29,15 @@ import { Text } from "@visx/text";
 import { useInView } from "react-intersection-observer";
 
 const MEMO_LIST: MemoItem[] = [
-  { id: 0, svg: <CloverWStar width={250} height={250} /> },
-  { id: 1, svg: <DogWStar width={250} height={250} /> },
-  { id: 2, svg: <HeartWStar width={250} height={250} /> },
-  { id: 3, svg: <FlowerWStar width={250} height={250} /> },
-  { id: 4, svg: <BookWStar width={250} height={250} /> },
-  { id: 5, svg: <GiftWStar width={250} height={250} /> },
-  { id: 6, svg: <BunnyWStar width={250} height={250} /> },
-  { id: 7, svg: <CottonWStar width={250} height={250} /> },
-  { id: 8, svg: <AppleWStar width={250} height={250} /> },
+  { id: 0, svg: <CloverWStar width={250} height={250} />, x: 130, y: 125 },
+  { id: 1, svg: <DogWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 2, svg: <HeartWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 3, svg: <FlowerWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 4, svg: <BookWStar width={250} height={250} />, x: 125, y: 110 },
+  { id: 5, svg: <GiftWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 6, svg: <BunnyWStar width={250} height={250} />, x: 120, y: 130 },
+  { id: 7, svg: <CottonWStar width={250} height={250} />, x: 125, y: 125 },
+  { id: 8, svg: <AppleWStar width={250} height={250} />, x: 125, y: 125 },
 ];
 
 const Achive = () => {
@@ -130,9 +130,9 @@ const Achive = () => {
               <g>
                 {MEMO_LIST[item.memoId].svg}
                 <Text
-                  x={125}
-                  y={125}
-                  width={120}
+                  x={MEMO_LIST[item.memoId].x}
+                  y={MEMO_LIST[item.memoId].y}
+                  width={200}
                   height={150}
                   verticalAnchor="middle"
                   textAnchor="middle"

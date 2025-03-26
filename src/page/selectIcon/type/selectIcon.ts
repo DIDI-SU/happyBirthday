@@ -25,4 +25,6 @@ export const memoMap = {
 export interface MemoItem {
   id: number;
   svg: React.ReactNode;
+  x?: number;
+  y?: number;
 }
