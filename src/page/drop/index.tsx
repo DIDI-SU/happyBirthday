@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { FCMContext } from "../../context/FCMContext";
 import { AchiveItem } from "../common/types/type";
@@ -24,12 +24,14 @@ import {
   Apple,
   Home,
   Archive,
+  DownloadIcon,
 } from "../common/icon/MemoIcon";
+import Download from "./components/download";
 import { MemoItem } from "../selectIcon/type/selectIcon";
 import AchiveLoading from "../achive/achiveLoading";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-
+import html2canvas from "html2canvas";
 const ACHIVE_MEMO_LIST: MemoItem[] = [
   { id: 0, svg: <Clover width={220} height={220} /> },
   { id: 1, svg: <Puppy width={220} height={220} /> },
@@ -56,6 +58,7 @@ const MEMO_LIST: MemoItem[] = [
 ];
 
 const Drop = () => {
+  const downloadRef = useRef<HTMLDivElement>(null);
   const { database } = useContext(FCMContext);
   const [data, setData] = useState<AchiveItem | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -178,6 +181,24 @@ const Drop = () => {
   }, [database]);
 
   // 전체 메시지 데이터 다운로드 함수
+  const downloadMemo = async () => {
+    if (!downloadRef.current) return;
+
+    try {
+      const canvas = await html2canvas(downloadRef.current, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true, // SVG 이미지 처리를 위해 추가
+      });
+
+      const link = document.createElement("a");
+      link.download = `memo_${new Date().getTime()}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch (error) {
+      console.error("이미지 다운로드 중 오류 발생:", error);
+    }
+  };
 
   // 로딩 중이면 로딩 화면 표시
   if (isLoading) {
@@ -189,7 +210,17 @@ const Drop = () => {
     <>
       <div className="flex flex-col items-center justify-center absolute top-10 w-full">
         <StraightLogo width={"80%"} />
-        <div className="flex items-center justify-center gap-2 mt-11">
+        <div className="flex items-center justify-center gap-2  mt-11">
+          <div
+            onClick={downloadMemo}
+            className="flex flex-col items-center justify-center mr-4"
+          >
+            <DownloadIcon width={32} height={32} className="mb-1" />
+            <div className="flex flex-col items-center justify-center">
+              <p className=" text-[12px] text-white">내 컨페티 </p>
+              <p className="  text-[12px] text-white">간직하기</p>
+            </div>
+          </div>
           <Link
             to="/main"
             className="flex flex-col items-center justify-center mr-4 "
@@ -202,7 +233,7 @@ const Drop = () => {
           </Link>
           <Link
             to="/achive"
-            className="flex flex-col items-center justify-center ml-8 "
+            className="flex flex-col items-center justify-center ml-4 "
           >
             <Archive width={32} height={32} />
             <div className="flex flex-col items-center justify-center ">
@@ -423,6 +454,7 @@ const Drop = () => {
           )}
         </div>
       </div>
+      {data && <Download data={data || null} ref={downloadRef} />}
     </>
   );
 };

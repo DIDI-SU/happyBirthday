@@ -27,4 +27,5 @@ export interface MemoItem {
   svg: React.ReactNode;
   x?: number;
   y?: number;
+  title?: string;
 }
