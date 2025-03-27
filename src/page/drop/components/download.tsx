@@ -11,7 +11,6 @@ import {
 } from "../../common/icon/MemoIcon";
 import { AchiveItem } from "../../common/types/type";
 
-import { Text } from "@visx/text";
 import { useTranslation } from "react-i18next";
 import { forwardRef } from "react";
 import React from "react";
