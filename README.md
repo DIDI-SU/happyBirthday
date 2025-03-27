@@ -1,4 +1,6 @@
-# 🎉 컨페티 (Confetti) 프로젝트
+# 🐶 Confetti To You! 프로젝트
+
+
 
 ## 프로젝트 소개
 
