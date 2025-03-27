@@ -139,8 +139,6 @@ const Achive = () => {
                     fill="#4B5563"
                     fontSize={15}
                     fontWeight="bold"
-                    lineHeight={2.0} // 한글에 적합한 줄간격
-                    capHeight={0.7} // 한글 높이에 맞게 조정
                   >
                     {item.memoText}
                   </Text>

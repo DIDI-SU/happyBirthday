@@ -216,13 +216,13 @@ const Drop = () => {
       >
         <StraightLogo width={"80%"} />
         <div
-          className={`flex items-center justify-center gap-2  w-full ${
+          className={`flex items-center justify-center gap-8  w-full ${
             windowSize.width < 640 ? "mt-0" : "mt-11"
           }`}
         >
           <div
             onClick={downloadMemo}
-            className="flex flex-col items-center justify-center mr-4"
+            className="flex flex-col items-center justify-center "
           >
             <DownloadIcon width={32} height={32} className="mb-1" />
             <div className="flex flex-col items-center justify-center">
@@ -232,7 +232,7 @@ const Drop = () => {
           </div>
           <Link
             to="/main"
-            className="flex flex-col items-center justify-center mr-4 "
+            className="flex flex-col items-center justify-center  "
           >
             <div className="flex flex-col items-center justify-center">
               <Home width={32} height={32} className="mb-1" />
@@ -242,7 +242,7 @@ const Drop = () => {
           </Link>
           <Link
             to="/achive"
-            className="flex flex-col items-center justify-center ml-4 "
+            className="flex flex-col items-center justify-center "
           >
             <Archive width={32} height={32} />
             <div className="flex flex-col items-center justify-center ">
