@@ -114,6 +114,11 @@ const Download = forwardRef<HTMLDivElement, { data: AchiveItem | null }>(
               {React.cloneElement(MEMO_COMBINATIONS[data?.memoId].svg, {
                 width: 220,
                 height: 220,
+                style: {
+                  imageRendering: "crisp-edges", // 이미지 선명도 개선
+                  filter: "none", // 필터 효과 제거
+                  opacity: 1, // 완전 불투명
+                },
               })}
             </div>
 

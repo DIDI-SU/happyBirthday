@@ -58,6 +58,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
   const [searchParams] = useSearchParams();
   const { database } = useContext(FCMContext);
   const [message, setMessage] = useState({ id: 0, messages: "" });
+  const [isSend, setIsSend] = useState(false);
   const navigate = useNavigate();
 
   const handleSendClick = (e: React.MouseEvent) => {
@@ -88,6 +89,7 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
       localStorage.setItem("memoId", message.id.toString());
       setCurrentMemoId(message.id);
       setValue(newMemoId.toString());
+      setIsSend(true);
       navigate("/drop");
     } catch (error) {
       console.error("Setup error:", error);
@@ -171,7 +173,10 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
               onClick={handleSendClick}
             >
               <button
-                className={`text-sm w-[40%] py-1 cursor-pointer bg-blue-500 rounded-md`}
+                className={`text-sm w-[40%] py-1 cursor-pointer bg-blue-500 rounded-md ${
+                  isSend ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={isSend}
               >
                 send!
               </button>

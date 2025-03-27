@@ -133,12 +133,14 @@ const Achive = () => {
                   <Text
                     x={MEMO_LIST[item.memoId].x}
                     y={MEMO_LIST[item.memoId].y}
-                    width={200}
+                    width={180}
                     verticalAnchor="middle"
                     textAnchor="middle"
                     fill="#4B5563"
                     fontSize={15}
                     fontWeight="bold"
+                    lineHeight={2.0} // 한글에 적합한 줄간격
+                    capHeight={0.7} // 한글 높이에 맞게 조정
                   >
                     {item.memoText}
                   </Text>

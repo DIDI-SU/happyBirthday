@@ -186,11 +186,12 @@ const Drop = () => {
 
     try {
       const canvas = await html2canvas(downloadRef.current, {
-        backgroundColor: "#fcf3d2", // 배경색 명시적 지정
-        scale: 2,
-        logging: true, // 디버깅용
+        backgroundColor: "#fcf3d2",
+        scale: 4, // 해상도 더 높게 설정 (2에서 3으로)
         useCORS: true,
-        allowTaint: true, // SVG 이미지 처리를 위해 추가
+        allowTaint: true,
+        imageTimeout: 0, // 이미지 로딩 타임아웃 늘림
+        logging: false, // 불필요한 로그 제거
       });
 
       const link = document.createElement("a");
