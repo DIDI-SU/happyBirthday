@@ -14,6 +14,7 @@ import { AchiveItem } from "../../common/types/type";
 import { Text } from "@visx/text";
 import { useTranslation } from "react-i18next";
 import { forwardRef } from "react";
+import React from "react";
 
 const MEMO_COMBINATIONS = [
   {
@@ -83,6 +84,7 @@ const Download = forwardRef<HTMLDivElement, { data: AchiveItem | null }>(
   ({ data }, ref) => {
     const { t } = useTranslation();
     if (!data) return null;
+
     return (
       <div
         ref={ref}
@@ -91,7 +93,7 @@ const Download = forwardRef<HTMLDivElement, { data: AchiveItem | null }>(
       >
         <div className="flex flex-col items-center justify-center bg-[#fcf3d2] w-[300px] h-[400px] p-5">
           <div className="flex flex-col items-center justify-center">
-            <p>나의 컨페티는</p>
+            <p className="text-lg">나의 컨페티는</p>
             <p className="text-center mb-4 text-lg font-medium">
               {t(
                 `confetti.characters.${
@@ -107,27 +109,21 @@ const Download = forwardRef<HTMLDivElement, { data: AchiveItem | null }>(
               )}
             </p>
           </div>
-          <svg width="300" height="300" viewBox="0 0 300 300">
-            <g transform="translate(150, 150)">
-              <g transform="translate(-110, -110)">
-                {MEMO_COMBINATIONS[data?.memoId].svg}
-                <g width="100" height="200">
-                  <Text
-                    x={110}
-                    y={110}
-                    width={200}
-                    verticalAnchor="middle"
-                    textAnchor="middle"
-                    fill="#4B5563"
-                    fontSize={15}
-                    fontWeight="bold"
-                  >
-                    {data?.memoText}
-                  </Text>
-                </g>
-              </g>
-            </g>
-          </svg>
+
+          <div className="relative w-[300px] h-[300px] flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {React.cloneElement(MEMO_COMBINATIONS[data?.memoId].svg, {
+                width: 220,
+                height: 220,
+              })}
+            </div>
+
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-gray-600 text-center text-md font-bold break-words whitespace-pre-wrap max-w-[180px]">
+                {data?.memoText}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );

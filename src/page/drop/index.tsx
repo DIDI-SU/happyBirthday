@@ -186,9 +186,11 @@ const Drop = () => {
 
     try {
       const canvas = await html2canvas(downloadRef.current, {
-        backgroundColor: null,
+        backgroundColor: "#fcf3d2", // 배경색 명시적 지정
         scale: 2,
-        useCORS: true, // SVG 이미지 처리를 위해 추가
+        logging: true, // 디버깅용
+        useCORS: true,
+        allowTaint: true, // SVG 이미지 처리를 위해 추가
       });
 
       const link = document.createElement("a");
