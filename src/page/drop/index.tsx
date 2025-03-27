@@ -210,9 +210,15 @@ const Drop = () => {
   // 메인 렌더링
   return (
     <>
-      <div className="flex flex-col items-center justify-center absolute top-10 w-full">
+      <div
+        className={`flex flex-col items-center justify-center absolute top-10 w-full `}
+      >
         <StraightLogo width={"80%"} />
-        <div className="flex items-center justify-center gap-2  mt-11">
+        <div
+          className={`flex items-center justify-center gap-2  w-full ${
+            windowSize.width < 640 ? "mt-0" : "mt-11"
+          }`}
+        >
           <div
             onClick={downloadMemo}
             className="flex flex-col items-center justify-center mr-4"
@@ -227,8 +233,8 @@ const Drop = () => {
             to="/main"
             className="flex flex-col items-center justify-center mr-4 "
           >
-            <Home width={32} height={32} className="mb-1" />
             <div className="flex flex-col items-center justify-center">
+              <Home width={32} height={32} className="mb-1" />
               <p className=" text-[12px] text-white">홈으로 </p>
               <p className="  text-[12px] text-white">돌아가기</p>
             </div>
