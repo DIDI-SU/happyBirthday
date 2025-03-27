@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+# 🎉 컨페티 (Confetti) 프로젝트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 프로젝트 소개
 
-Currently, two official plugins are available:
+**컨페티**는 사용자가 메시지를 작성하고 귀여운 아이콘과 함께 시각적으로 표현할 수 있는 웹 애플리케이션입니다. 메시지가 아름다운 애니메이션과 함께 떨어지는 컨페티 효과로 표시되어, 특별한 순간을 기념하거나 소중한 감정을 전달할 수 있습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 주요 기능
 
-## Expanding the ESLint configuration
+- 📝 **메시지 작성**: 사용자가 원하는 메시지를 작성할 수 있습니다.
+- 🎨 **아이콘 선택**: 9가지 귀여운 아이콘(클로버, 강아지, 하트, 흰앵초, 책, 선물, 토끼, 솜, 사과) 중 선택할 수 있습니다.
+- ✨ **애니메이션 효과**: 작성한 메시지가 컨페티처럼 화면에 떨어지는 시각적 효과를 제공합니다.
+- 💾 **이미지 저장**: 만든 컨페티를 이미지로 저장할 수 있어 소셜 미디어에 공유하거나 저장할 수 있습니다.
+- 📚 **아카이빙**: 이전에 만든 컨페티를 모아볼 수 있는 기능을 제공합니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 기술 스택
 
-- Configure the top-level `parserOptions` property like this:
+- **프론트엔드**: React, TypeScript, Tailwind CSS
+- **애니메이션**: Framer Motion
+- **데이터베이스**: Firebase Firestore
+- **이미지 처리**: HTML2Canvas
+- **다국어 지원**: i18next
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 프로젝트 구조
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- `src/page/drop`: 컨페티 애니메이션 및 메인 화면 구현
+- `src/page/common/icon`: 아이콘 컴포넌트
+- `src/page/achive`: 이전 컨페티 아카이브 페이지
+- `src/context`: 애플리케이션 상태 관리
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 사용 방법
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. 메인 화면에서 메시지 작성 및 아이콘 선택
+2. 작성 완료 시 컨페티 애니메이션으로 메시지 표시
+3. 화면 하단의 버튼을 통해 이미지로 저장 가능
+4. 아카이브 버튼을 통해 이전 컨페티 확인 가능
+
+## 반응형 디자인
+
+- 모바일, 태블릿, 데스크탑 환경에 최적화된 UI 제공
+- 다양한 화면 크기에서 적절한 애니메이션 효과와 레이아웃 구현
+
+## 확장 가능성
+
+- 소셜 미디어 공유 기능 추가
+- 더 다양한 아이콘 및 테마 추가
+- 사용자 간 컨페티 전송 기능 구현
+- 시즌별 특별 아이콘 및 효과 도입
+
+---
+
+이 프로젝트는 특별한 순간을 기념하고 감정을 시각적으로 표현하는 새로운 방식을 제공합니다. 단순하지만 감성적인 상호작용을 통해 사용자에게 즐거운 경험을 선사합니다.
