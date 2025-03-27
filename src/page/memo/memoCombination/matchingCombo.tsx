@@ -113,10 +113,10 @@ const MatchingCombo = ({ matchingCombo }: MatchingComboProps) => {
         name: "clover",
         korName: "클로버",
         translateX: "0",
-        translateY: "-10",
+        translateY: "0",
         memoSize: { width: 196, height: 196 },
-        memoTranslateX: "-130",
-        memoTranslateY: "0",
+        memoTranslateX: "-110",
+        memoTranslateY: "-110",
         scale: 1,
         pairs: [
           { item1: 0, item2: 1 }, // Strawberry + Chocolate
